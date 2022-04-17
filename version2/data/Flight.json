@@ -1,0 +1,33 @@
+[
+    {
+        "FlightNum": "FR1392",
+        "Time": "06/12/2022,17:45-22:15",
+        "From": "London",
+        "To": "Singapore"
+    },
+    {
+        "FlightNum": "LH905",
+        "Time": "19/05/2022,01:30-16:15",
+        "From": "London",
+        "To": "Beijing"
+    },
+    {
+        "FlightNum": "MH666",
+        "Time": "27/05/2022,07:05-18:25",
+        "From": "London",
+        "To": "New York"
+    },
+    {
+        "FlightNum": "CA166",
+        "Time": "18/05/2022,00:05-08:25",
+        "From": "London",
+        "To": "Toronto"
+    },
+    {
+        "FlightNum": "LX188",
+        "Time": "25/07/2022,10:05-12:05",
+        "From": "London",
+        "To": "Zurich"
+    }
+
+]
