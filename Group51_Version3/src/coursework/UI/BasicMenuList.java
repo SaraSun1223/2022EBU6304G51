@@ -205,7 +205,7 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                                  Milk.setText("Milk");
                                                  //-----button10-------
                                                  button10.setBackground(Color.white);
-                                                 button10.setIcon(new ImageIcon("Imgs/Milk.jpg"));
+                                                 button10.setIcon(new ImageIcon(".\\Imgs\\Milk.jpg"));
                                           }
                                           {
                                                  //----JRadioButton----

@@ -63,7 +63,7 @@ public class MyBooking extends MouseAdapter {
 	JLabel lab4;
 	JButton B1;	
 	JButton B2;	
-	
+    JButton back;
 
 
       public  MyBooking(){
@@ -240,7 +240,20 @@ public class MyBooking extends MouseAdapter {
         jp2.add(list1);
         jp2.add(list2);
         jp1.add(jp2);
-        p1.add(new JScrollPane(menu));
+        p1.setLayout(new BorderLayout());
+        p1.add(new JScrollPane(menu),BorderLayout.CENTER);
+        back = new JButton("Back");
+        p1.add(back,BorderLayout.SOUTH);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jfra.setVisible(false);
+                JFrameTest3 frame = new JFrameTest3();
+                frame.setVisible(true);
+            }
+        });
+
+
         p2.add(label2,BorderLayout.WEST);
         p2.add(label1,BorderLayout.CENTER);
         p3.setLayout(pp);

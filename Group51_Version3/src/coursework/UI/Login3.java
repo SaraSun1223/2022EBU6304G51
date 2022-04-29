@@ -58,12 +58,14 @@ public class Login3 extends JFrame {
     JPanel option1;
 
     JPanel option2;
+    JPanel backButton;
 
     JButton b1;
 
     JButton b2;
 
     JButton b3;
+    JButton back;
 
     public void loadFrame() {
         p1 = new JPanel();
@@ -71,16 +73,16 @@ public class Login3 extends JFrame {
         p3 = new JPanel();
         p4 = new JPanel();
         p1.setBackground(new Color(60, 100, 210));
-        p1.setPreferredSize(new Dimension(760, 90));
+        p1.setPreferredSize(new Dimension(760, 70));
         p2.setBackground(new Color(60, 100, 210));
-        p2.setPreferredSize(new Dimension(760, 90));
+        p2.setPreferredSize(new Dimension(760, 70));
         p3.setBackground(new Color(60, 100, 210));
         p3.setPreferredSize(new Dimension(230, 380));
         p4.setBackground(new Color(60, 100, 210));
         p4.setPreferredSize(new Dimension(230, 380));
 
         content = new JPanel();
-        content.setLayout(new GridLayout(6, 1));
+        content.setLayout(new GridLayout(7, 1));
         content.setBackground(Color.white);
         content.setBorder(BorderFactory.createEtchedBorder());
 
@@ -130,6 +132,18 @@ public class Login3 extends JFrame {
         content.add(option1);
         content.add(option2);
 
+        backButton = new JPanel();
+        backButton.setBackground(Color.white);
+        back = new JButton("Back");
+        back.addActionListener(new ButtonListener3(this));
+        back.setActionCommand("Back");
+        back.setBackground(new Color(60, 100, 210));
+        back.setForeground(Color.white);
+        back.setPreferredSize(new Dimension(60, 22));
+        back.setBorder(BorderFactory.createRaisedSoftBevelBorder());
+        backButton.add(back);
+        content.add(backButton);
+
         this.add(content, BorderLayout.CENTER);
         this.add(p1, BorderLayout.NORTH);
         this.add(p2, BorderLayout.SOUTH);
@@ -178,10 +192,16 @@ class ButtonListener3 implements ActionListener {
             jf.setVisible(false);
             new MyBooking().jfra.setVisible(true);
             // to de added
-        } else if (e.getActionCommand().equals("Enter booking number")) {
+        }
+        else if (e.getActionCommand().equals("Enter booking number")) {
             jf.setVisible(false);
             new Login2test().setVisible(true);
-        } else {
+        }
+        else if(e.getActionCommand().equals("Back")){
+            jf.setVisible(false);
+            new JFrameTest().setVisible(true);
+        }
+        else {
             jf.setVisible(false);
             new Login1().setVisible(true);
         }

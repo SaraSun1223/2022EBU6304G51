@@ -19,22 +19,24 @@ import java.awt.event.ActionListener;
  * @since 30 Mar 2022
  *
  * @author Junyue Li
- * @version 1.2  add button's action listener
+ * @version 1.2 add button's action listener
  * @since 30 Mar 2022
  */
 
-public class StaffLogin extends JFrame{
+public class StaffLogin extends JFrame {
 
     JLabel welcome;
     JTextField t1;
     JTextField t2;
     JButton b1;
+    JButton b2;
 
     JPanel login;
     JPanel welcomePanel;
     JPanel text1;
     JPanel text2;
     JPanel loginButton;
+    JPanel backButton;
 
     JPanel p1;
     JPanel p2;
@@ -63,7 +65,7 @@ public class StaffLogin extends JFrame{
         p4.setPreferredSize(new Dimension(230, 300));
 
         login = new JPanel();
-        login.setLayout(new GridLayout(4, 1));
+        login.setLayout(new GridLayout(5, 1));
         login.setBackground(Color.white);
         login.setBorder(BorderFactory.createEtchedBorder());
 
@@ -73,8 +75,8 @@ public class StaffLogin extends JFrame{
         welcome = new JLabel("Welcome to Heathrow Airport!", JLabel.CENTER);
         welcome.setForeground(Color.white);
         welcome.setOpaque(true);
-        welcome.setBorder(BorderFactory.createLineBorder(new Color(60,100,210),5,true));
-        welcome.setBackground(new Color(60,100,210));
+        welcome.setBorder(BorderFactory.createLineBorder(new Color(60, 100, 210), 5, true));
+        welcome.setBackground(new Color(60, 100, 210));
         welcome.setFont(new Font(null, Font.PLAIN, 15));
         welcomePanel.add(welcome);
         login.add(welcomePanel);
@@ -93,10 +95,21 @@ public class StaffLogin extends JFrame{
         b1.addActionListener(new StaffButtonListener(this));
         b1.setBackground(new Color(60, 100, 210));
         b1.setForeground(Color.white);
-        b1.setPreferredSize(new Dimension(185,22));
+        b1.setPreferredSize(new Dimension(185, 22));
         b1.setBorder(BorderFactory.createRaisedSoftBevelBorder());
         loginButton.add(b1);
         login.add(loginButton);
+
+        backButton = new JPanel();
+        backButton.setBackground(Color.white);
+        b2 = new JButton("Back");
+        b2.addActionListener(new StaffButtonListener(this));
+        b2.setBackground(new Color(60, 100, 210));
+        b2.setForeground(Color.white);
+        b2.setPreferredSize(new Dimension(185, 22));
+        b2.setBorder(BorderFactory.createRaisedSoftBevelBorder());
+        backButton.add(b2);
+        login.add(backButton);
 
         this.add(login, BorderLayout.CENTER);
         this.add(p1, BorderLayout.NORTH);
@@ -125,72 +138,84 @@ public class StaffLogin extends JFrame{
 class StaffButtonListener implements ActionListener {
     StaffLogin jf;
 
-    public StaffButtonListener(StaffLogin frame){
+    public StaffButtonListener(StaffLogin frame) {
         this.jf = frame;
 
     }
 
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
 
-        if(e.getActionCommand().equals("Login")){
-            if(checkTextField()){
-                Object[] options = {"No","Yes"};
+        if (e.getActionCommand().equals("Login")) {
+            if (checkTextField()) {
+                Object[] options = { "No", "Yes" };
 
-                int choice = JOptionPane.showOptionDialog(null,"Do you want to login?",
-                        "Confirm Login in?", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
-                //create a option dialog to confirm check in and receive the user's choice
-
-                if(choice != 0){   //if the user chose "Yes", confirm to check in
-                    //jf.setVisible(false); //exit current frame
-                    //new ManagementFrame().jfra.setVisible(true);
+                int choice = JOptionPane.showOptionDialog(null, "Do you want to login?",
+                        "Confirm Login in?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
+                        options[0]);
+                // create a option dialog to confirm check in and receive the user's choice
+                if(choice==JOptionPane.CANCEL_OPTION){//give up, draw back
+                    jf.setVisible(true);
+                    new StaffLogin().setVisible(true);
+                }
+                if (choice == 1) {
+                    // if the user chose "Yes", confirm to check in
+                    // jf.setVisible(false); //exit current frame
+                    // new ManagementFrame().jfra.setVisible(true);
                     loginCheck(jf.t1, jf.t2);
+
                 }
 
-            }
-            else {  //if there are some incomplete session, the following commands will be executed.
-                JOptionPane.showMessageDialog(jf, "Please fill in the missing information.","Missing information",JOptionPane.WARNING_MESSAGE);
-                //display an error box prompting the user to complete the missing information
+            } else { // if there are some incomplete session, the following commands will be
+                     // executed.
+                JOptionPane.showMessageDialog(jf, "Please fill in the missing information.", "Missing information",
+                        JOptionPane.WARNING_MESSAGE);
+                // display an error box prompting the user to complete the missing information
             }
         }
 
+        if(e.getActionCommand().equals("Back")){
+            jf.setVisible(false);
+            new JFrameTest3().setVisible(true);
+        }
     }
 
-    public boolean checkTextField(){
-        boolean a1=this.CheckEmpty(jf.t1);
+    public boolean checkTextField() {
+        boolean a1 = this.CheckEmpty(jf.t1);
         System.out.println(a1);
-        boolean a2=this.CheckEmpty(jf.t2);
+        boolean a2 = this.CheckEmpty(jf.t2);
         System.out.println(a2);
-        return a1&&a2;
+        return a1 && a2;
     }
 
-    public boolean CheckEmpty(JTextField textField){
+    public boolean CheckEmpty(JTextField textField) {
         boolean result = false;
         System.out.println(textField.getText());
-        if(textField.getText().equals("")||textField.getText().equals("Staff ID")||textField.getText().equals("Password")){
+        if (textField.getText().equals("") || textField.getText().equals("Staff ID")
+                || textField.getText().equals("Password")) {
             System.out.println("the textfield is null");
-        }
-        else{
+        } else {
             result = true;
             System.out.println(textField.getText());
         }
         return result;
     }
+
     public static String StaffIDStored;
     public static String PINStored;
 
-    public void loginCheck(JTextField t1, JTextField t2){
+    public void loginCheck(JTextField t1, JTextField t2) {
         String staffid = t1.getText();
         String password = t2.getText();
         PersonalController controller = PersonalController.getController();
-        int status = controller.checkStaff(staffid,password);
-        if(status==2){
-            JOptionPane.showMessageDialog(jf, "Sorry, the staff ID and password you entered doesn't exist.", "Login failed",
+        int status = controller.checkStaff(staffid, password);
+        if (status == 2) {
+            JOptionPane.showMessageDialog(jf, "Sorry, the staff ID and password you entered doesn't exist.",
+                    "Login failed",
                     JOptionPane.WARNING_MESSAGE);
-        }
-        else{
+        } else {
             jf.setVisible(false); // exit current frame
-            StaffIDStored=staffid;
-            PINStored=password;
+            StaffIDStored = staffid;
+            PINStored = password;
             new ManagementFrame().jfra.setVisible(true);
         }
     }

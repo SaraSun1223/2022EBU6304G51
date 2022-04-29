@@ -38,6 +38,13 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
     JButton button2;//baggage
     JButton button3;//meal
     JButton button4;//seat
+
+    JButton b1;
+    JButton b2;
+    JButton b3;
+    JButton b4;
+
+
     JList menu;
     JTextField SearchPsg;
     JTextField SearchBag;
@@ -60,6 +67,7 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
 
 	JPanel jp1;
     JPanel jp2;
+    JPanel jp3;
     String[] Names = {"Flight number","Passenger name","ID number","Check-in status","Phone number"};
     ArrayList<Passenger> passengers = new ArrayList<>();
     String[][] Info;
@@ -69,16 +77,19 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
 
     JPanel j2p1;
     JPanel j2p2;
+    JPanel j2p3;
     String[] Names2 = {"Flight number","Passenger name","ID number","Baggage number","Baggage weight"};
     String[][] Info2;
 
     JPanel j3p1;
     JPanel j3p2;
+    JPanel j3p3;
     String[] Names3 = {"Flight number","Passenger name","Seat number","Standard meal","Extra meal"};
     String[][] Info3;
 
     JPanel j4p1;
     JPanel j4p2;
+    JPanel j4p3;
     String[] Names4 = {"Flight number and destination","Passenger name","ID number","Seat number","Phone number"};
     String[][] Info4 ={
             {"3933 Beijing","Lily","110100","G10","1923884848"}
@@ -103,10 +114,18 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
 		button = new JButton("Search");
         button.addActionListener(this);
         button.setActionCommand("SearchFlight");
+        b1 = new JButton("Back");
+        b1.addActionListener(this);
+        b1.setActionCommand("Back");
+        b1.setBackground(new Color(60, 100, 210));
+        b1.setForeground(Color.white);
+        b1.setPreferredSize(new Dimension(60, 30));
+        b1.setBorder(BorderFactory.createRaisedSoftBevelBorder());
         SearchPsg = new JTextField();
 		SearchPsg.setColumns(40);
 		jp1 = new JPanel();
 		jp2 = new JPanel();
+        jp3 = new JPanel();
 		CheckinInfo();
         PsgInftable = new JTable(new MyTable1(Names,Info));
         PsgInftable.setPreferredScrollableViewportSize(new Dimension(600,34));
@@ -116,8 +135,16 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
         button2 = new JButton("Search");
         SearchBag = new JTextField();
         SearchBag.setColumns(40);
+        b2 = new JButton("Back");
+        b2.addActionListener(this);
+        b2.setActionCommand("Back");
+        b2.setBackground(new Color(60, 100, 210));
+        b2.setForeground(Color.white);
+        b2.setPreferredSize(new Dimension(60, 30));
+        b2.setBorder(BorderFactory.createRaisedSoftBevelBorder());
         j2p1 = new JPanel();
         j2p2 = new JPanel();
+        j2p3 = new JPanel();
         button2.addActionListener(this);
         button2.setActionCommand("SearchBaggage");
         BaggageInfo();
@@ -129,8 +156,16 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
         button3 = new JButton("Search");
         SearchMeal = new JTextField();
         SearchMeal.setColumns(40);
+        b3 = new JButton("Back");
+        b3.addActionListener(this);
+        b3.setActionCommand("Back");
+        b3.setBackground(new Color(60, 100, 210));
+        b3.setForeground(Color.white);
+        b3.setPreferredSize(new Dimension(60, 30));
+        b3.setBorder(BorderFactory.createRaisedSoftBevelBorder());
         j3p1 = new JPanel();
         j3p2 = new JPanel();
+        j3p3 = new JPanel();
         button3.addActionListener(this);
         button3.setActionCommand("SearchMeal");
         MealInfo();
@@ -142,8 +177,16 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
         button4 = new JButton("Search");
         SearchSeat = new JTextField();
         SearchSeat.setColumns(40);
+        b4 = new JButton("Back");
+        b4.addActionListener(this);
+        b4.setActionCommand("Back");
+        b4.setBackground(new Color(60, 100, 210));
+        b4.setForeground(Color.white);
+        b4.setPreferredSize(new Dimension(60, 30));
+        b4.setBorder(BorderFactory.createRaisedSoftBevelBorder());
         j4p1 = new JPanel();
         j4p2 = new JPanel();
+        j4p3 = new JPanel();
         button4.addActionListener(this);
         button4.setActionCommand("SearchSeat");
 
@@ -174,49 +217,65 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
         pp1.setLayout(new BorderLayout());
         jp1.setBackground(Color.white);
 		jp2.setBackground(Color.white);
+        jp3.setBackground(Color.white);
 		jp2.setLayout(new BorderLayout());
+        jp3.setLayout(new BorderLayout());
 		jp1.add(SearchPsg);
 	    jp1.add(button);
 		jp2.add(PsgInftable.getTableHeader(),BorderLayout.NORTH);
 		jp2.add(PsgInftable,BorderLayout.CENTER);
+        jp3.add(b1,BorderLayout.EAST);
 		pp1.add(jp1,BorderLayout.NORTH);
         pp1.add(jp2,BorderLayout.CENTER);
+        pp1.add(jp3,BorderLayout.SOUTH);
 
 //        bagg
         j2p1.setBackground(Color.white);
         j2p2.setBackground(Color.white);
+        j2p3.setBackground(Color.white);
         pp2.setLayout(new BorderLayout());
         j2p2.setLayout(new BorderLayout());
+        j2p3.setLayout(new BorderLayout());
         j2p1.add(SearchBag);
         j2p1.add(button2);
         j2p2.add(BaggageInftable.getTableHeader(),BorderLayout.NORTH);
         j2p2.add(BaggageInftable,BorderLayout.CENTER);
+        j2p3.add(b2,BorderLayout.EAST);
         pp2.add(j2p1,BorderLayout.NORTH);
         pp2.add(j2p2,BorderLayout.CENTER);
+        pp2.add(j2p3,BorderLayout.SOUTH);
 
 //      meal
         j3p1.setBackground(Color.white);
         j3p2.setBackground(Color.white);
+        j3p3.setBackground(Color.white);
         pp3.setLayout(new BorderLayout());
         j3p2.setLayout(new BorderLayout());
+        j3p3.setLayout(new BorderLayout());
         j3p1.add(SearchMeal);
         j3p1.add(button3);
         j3p2.add(MealInftable.getTableHeader(),BorderLayout.NORTH);
         j3p2.add(MealInftable,BorderLayout.CENTER);
+        j3p3.add(b3,BorderLayout.EAST);
         pp3.add(j3p1,BorderLayout.NORTH);
         pp3.add(j3p2,BorderLayout.CENTER);
+        pp3.add(j3p3,BorderLayout.SOUTH);
 
         //      seat
         j4p1.setBackground(Color.white);
         j4p2.setBackground(Color.white);
+        j4p3.setBackground(Color.white);
         pp4.setLayout(new BorderLayout());
         j4p2.setLayout(new BorderLayout());
+        j4p3.setLayout(new BorderLayout());
         j4p1.add(SearchSeat);
         j4p1.add(button4);
         j4p2.add(SeatInftable.getTableHeader(),BorderLayout.NORTH);
         j4p2.add(SeatInftable,BorderLayout.CENTER);
+        j4p3.add(b4,BorderLayout.EAST);
         pp4.add(j4p1,BorderLayout.NORTH);
         pp4.add(j4p2,BorderLayout.CENTER);
+        pp4.add(j4p3,BorderLayout.SOUTH);
 
         pp1.setBackground(Color.white);
         pp2.setBackground(Color.white);
@@ -481,7 +540,11 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
 //            jfra.setVisible(true);//set frame visible
             System.out.println("Already searched through all passenger information.");
         }
-        else ;
+        else
+        if(e.getActionCommand().equals("Back")){
+            jfra.setVisible(false);
+            new StaffLogin().setVisible(true);
+        };
 
 
     }

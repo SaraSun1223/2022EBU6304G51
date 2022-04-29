@@ -62,6 +62,7 @@ public class Login2test extends JFrame {
     JPanel option1;
 
     JPanel option2;
+    JPanel backButton;
 
     JTextField t1;
 
@@ -70,6 +71,7 @@ public class Login2test extends JFrame {
     JButton b2;
 
     JButton b3;
+    JButton back;
 
     public void loadFrame() {
         p1 = new JPanel();
@@ -77,9 +79,9 @@ public class Login2test extends JFrame {
         p3 = new JPanel();
         p4 = new JPanel();
         p1.setBackground(new Color(60, 100, 210));
-        p1.setPreferredSize(new Dimension(760, 90));
+        p1.setPreferredSize(new Dimension(760, 70));
         p2.setBackground(new Color(60, 100, 210));
-        p2.setPreferredSize(new Dimension(760, 90));
+        p2.setPreferredSize(new Dimension(760, 70));
         p3.setBackground(new Color(60, 100, 210));
         p3.setPreferredSize(new Dimension(230, 380));
         p4.setBackground(new Color(60, 100, 210));
@@ -87,7 +89,7 @@ public class Login2test extends JFrame {
 
         content = new JPanel();
         content.setSize(300, 400);
-        content.setLayout(new GridLayout(6, 1));
+        content.setLayout(new GridLayout(7, 1));
         content.setBackground(Color.white);
         content.setBorder(BorderFactory.createEtchedBorder());
 
@@ -132,6 +134,18 @@ public class Login2test extends JFrame {
         optionsStyle();
         content.add(option1);
         content.add(option2);
+
+        backButton = new JPanel();
+        backButton.setBackground(Color.white);
+        back = new JButton("Back");
+        back.addActionListener(new ButtonListener2test(this));
+        back.setActionCommand("Back");
+        back.setBackground(new Color(60, 100, 210));
+        back.setForeground(Color.white);
+        back.setPreferredSize(new Dimension(60, 22));
+        back.setBorder(BorderFactory.createRaisedSoftBevelBorder());
+        backButton.add(back);
+        content.add(backButton);
 
         buttonAction();
 
@@ -199,22 +213,29 @@ class ButtonListener2test implements ActionListener {
                         options[0]);
                 // create a option dialog to confirm check in and receive the user's choice
 
-                if (choice != 0) { // if the user chose "Yes", confirm to check in
+                if (choice == 1) { // if the user chose "Yes", confirm to check in
                     //jf.setVisible(false); // exit current frame
                     //new MyBooking().jfra.setVisible(true);
                     loginCheck(jf.t1);
                 }
 
-            } else { // if there are some incomplete session, the following commands will be
+            }
+            else { // if there are some incomplete session, the following commands will be
                      // executed.
                 JOptionPane.showMessageDialog(jf, "Please fill in the missing information.", "Missing information",
                         JOptionPane.WARNING_MESSAGE);
                 // display an error box prompting the user to complete the missing information
             }
-        } else if (e.getActionCommand().equals("Enter surname and ID number")) {
+        }
+        else if (e.getActionCommand().equals("Enter surname and ID number")) {
             jf.setVisible(false);
             new Login1().setVisible(true);
-        } else {
+        }
+        else if(e.getActionCommand().equals("Back")){
+            jf.setVisible(false);
+            new JFrameTest().setVisible(true);
+        }
+        else {
             jf.setVisible(false);
             // to be added!
             new Login3().setVisible(true);
