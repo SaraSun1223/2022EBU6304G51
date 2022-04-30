@@ -28,6 +28,7 @@ public class DataManager {
     public ArrayList<Reservations>    reservations;
     public ArrayList<Flight> flights;
     public ArrayList<Staff>  staffs;
+    public ArrayList<Menu> meals;
 
     /**
      * DataManager constructor
@@ -42,6 +43,7 @@ public class DataManager {
         reservations = (ArrayList<Reservations>) JSON.parseArray(IO.read("Reservations.json"), Reservations.class);
         flights = (ArrayList<Flight>) JSON.parseArray(IO.read("Flight.json"),Flight.class);
         staffs = (ArrayList<Staff>) JSON.parseArray(IO.read("Staff.json"), Staff.class);
+        meals = (ArrayList<Menu>) JSON.parseArray(IO.read("Menu.json"), Menu.class);
     }
 
     public void updateDataManager() throws IOException{
@@ -49,6 +51,7 @@ public class DataManager {
         reservations = (ArrayList<Reservations>) JSON.parseArray(IO.read("Reservations.json"), Reservations.class);
         flights = (ArrayList<Flight>) JSON.parseArray(IO.read("Flight.json"),Flight.class);
         staffs = (ArrayList<Staff>) JSON.parseArray(IO.read("Staff.json"), Staff.class);
+        meals = (ArrayList<Menu>) JSON.parseArray(IO.read("Menu.json"), Menu.class);
     }
 
     /**
@@ -60,6 +63,7 @@ public class DataManager {
         IO.write("Reservations.json", JSON.toJSONString(reservations));
         IO.write("Flight.json", JSON.toJSONString(flights));
         IO.write("Staff.json", JSON.toJSONString(staffs));
+        IO.write("Menu.json", JSON.toJSONString(meals));
     }
 
 

@@ -22,11 +22,7 @@ public class Confirmations extends JPanel{
     JList list2;
     JList list3;
     JLabel heading4;
-    JTable extraoptionInfo;
-    String[] Names = {"Food Glossary","Price","Number"};
-    String[][] Info={
-            {"Chicken noodle","100","1"}
-    };
+
 
 
     public Confirmations(){
@@ -166,64 +162,15 @@ public class Confirmations extends JPanel{
         p3.setLayout(new BorderLayout());
         p3.setBackground(Color.white);
 
-        JPanel p3_1 = new JPanel();
-        p3_1.setLayout(new BorderLayout());
-        p3_1.setBackground(new Color(60,100,210));
-        heading4 = new JLabel("Details of meal:");
-        heading4.setForeground(Color.white);
-        heading4.setFont(new Font("", Font.BOLD, 15));
-        p3_1.add(heading4,BorderLayout.NORTH);
-        p3.add(p3_1,BorderLayout.NORTH);
-
-        JPanel p3_2 = new JPanel();
-        p3_2.setBackground(Color.white);
-        extraoptionInfo = new JTable(new MyTable(Names,Info));
-        extraoptionInfo.setPreferredScrollableViewportSize(new Dimension(600,34));
-        extraoptionInfo.getColumnModel().getColumn(0).setPreferredWidth(150);
-        extraoptionInfo.getColumnModel().getColumn(1).setPreferredWidth(150);
-        extraoptionInfo.getColumnModel().getColumn(2).setPreferredWidth(150);
-        p3_2.add(extraoptionInfo.getTableHeader());
-        p3_2.add(extraoptionInfo);
-        p3.add(p3_2,BorderLayout.CENTER);
-
+//        JPanel p3_1 = new JPanel();
+//        p3_1.setLayout(new BorderLayout());
+//        p3_1.setBackground(new Color(60,100,210));
+//        heading4 = new JLabel("Details of meal:");
+//        heading4.setForeground(Color.white);
+//        heading4.setFont(new Font("", Font.BOLD, 15));
+//        p3_1.add(heading4,BorderLayout.NORTH);
+//        p3.add(p3_1,BorderLayout.NORTH);
         this.add(p3,BorderLayout.CENTER);
 
-
-
-
-
     }
-}
-class MyTable extends AbstractTableModel
-{
-    String[] Names;
-    String[][] Info;
-
-    public MyTable(){
-
-    }
-    public MyTable(String[] names,String[][]info){
-        Names = names;
-        Info = info;
-    }
-    @Override
-    public int getRowCount() {
-        return Info.length;
-    }
-
-    @Override
-    public int getColumnCount() {
-        return Names.length;
-    }
-
-    public String getColumnName(int col){
-        return Names[col];
-    }
-
-    @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        return Info[rowIndex][columnIndex];
-    }
-
-
 }

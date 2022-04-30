@@ -8,9 +8,10 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * class for customer
- * @author Lingsong Feng
- * @version 5.3
+ * @author Junyue Li
+ * @version 2.0
  */
+
 public class Passenger {
 
     @JSONField(name = "surname")

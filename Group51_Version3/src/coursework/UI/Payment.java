@@ -30,24 +30,60 @@ public class Payment extends JPanel{
     JRadioButton master;
     JRadioButton expre;
     JButton confirm;
+    JPanel phead;
+    JPanel pmeal;
+    JPanel pseat;
+    JTable extraoptionInfo;
+    String[] Names = {"Food Glossary","Price","Number"};
+    String[][] Info={
+            {"Chicken noodle","100","1"}
+    };
     public  Payment(){
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridLayout(2,1));
         this.setBackground(Color.white);
+
+
+
+        pmeal = new JPanel();
+        pmeal.setBorder(new TitledBorder("Airline Food Bill"));
+        pmeal.setBackground(Color.white);
+        pmeal.setSize(150,150);
+        extraoptionInfo = new JTable(new MyTable1(Names,Info));
+        extraoptionInfo.setPreferredScrollableViewportSize(new Dimension(600,34));
+        extraoptionInfo.getColumnModel().getColumn(0).setPreferredWidth(50);
+        extraoptionInfo.getColumnModel().getColumn(1).setPreferredWidth(50);
+        extraoptionInfo.getColumnModel().getColumn(2).setPreferredWidth(50);
+        pmeal.add(extraoptionInfo.getTableHeader());
+        pmeal.add(extraoptionInfo);
+
+
+        pseat = new JPanel();
+        pseat.setBorder(new TitledBorder("Bill For Upgrades"));
+        pseat.add(new JLabel("往这里加东东"));
+        pseat.setBackground(Color.white);
+
+        phead = new JPanel();
+        phead.setLayout(new GridLayout(1,2));
+        phead.setBackground(Color.white);
+        phead.add(pmeal);
+        phead.add(pseat);
+        this.add(phead);
+
         //heading
         p1 = new JPanel();
         heading = new JLabel("Enter your bank card information to complete the payment:");
         heading.setToolTipText("To pay for your extra option");
         heading.setForeground(Color.white);
-        heading.setFont(new Font("", Font.BOLD, 15));
+        heading.setFont(new Font("", Font.BOLD, 10));
         heading.setHorizontalAlignment(SwingConstants.CENTER);
         p1.add(heading);
         p1.setBackground(new Color(60, 100, 210));
-        this.add(p1,BorderLayout.NORTH);
+//        this.add(p1);
 
         //card information
         p2=new JPanel();
         p2.setLayout(new FlowLayout());
-
+        p2.add(p1);
         JLabel fnlabel = new JLabel("First name:");
         JLabel lnlabel = new JLabel("Last name:");
         fn = new JTextField(10);
@@ -80,8 +116,6 @@ public class Payment extends JPanel{
 
 
 
-
-        //
         cards = new ButtonGroup();
         p3 = new JPanel();
         p3.setLayout(new BorderLayout());
@@ -89,8 +123,8 @@ public class Payment extends JPanel{
         heading2 = new JLabel("Please select your bank card type:");
         heading2.setFont(new Font("", Font.BOLD, 15));
         JPanel p3_1 = new JPanel();
-
-        p3_1.add(heading2);
+        p3_1.setLayout(new BorderLayout());
+        p3_1.add(heading2,BorderLayout.NORTH);
 
         Icon visaicon = new ImageIcon("Imgs/Visa5.png");
         visa = new JRadioButton("Visa Card",visaicon);
@@ -106,13 +140,13 @@ public class Payment extends JPanel{
         cards.add(master);
         cards.add(expre);
         JPanel p3_2 = new JPanel();
-
+        p3_2.setLayout(new FlowLayout());
         p3_2.add(visa);
         p3_2.add(master);
         p3_2.add(expre);
         p3_1.setBackground(Color.white);
         p3_2.setBackground(Color.white);
-        p3.add(p3_1,BorderLayout.NORTH);
+        p3.add(p3_1,BorderLayout.CENTER);
         p3.add(p3_2,BorderLayout.CENTER);
         visa.addChangeListener(new ChangeListener() {
             @Override
@@ -150,7 +184,7 @@ public class Payment extends JPanel{
         p2.add(confirm);
 
         p2.setBackground(Color.white);
-        this.add(p2,BorderLayout.CENTER);
+        this.add(p2);
 
 
 

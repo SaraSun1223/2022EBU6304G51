@@ -14,6 +14,7 @@ public class FlightManager {
      * @return reference of that session
      * @throws IOException
      */
+
     public static Flight getFlightByFlightNum(String FlightNum) throws IOException {
         ArrayList<Flight> flights = DataManager.getInstance().flights;
         for (Flight flight : flights) {
