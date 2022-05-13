@@ -113,7 +113,7 @@ public class Seat extends MouseAdapter{
 		}
 
 		}
-		public void Action(JButton b1) {
+		public void Action(JButton b1,MyBooking myBooking) {
 			b1.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -131,7 +131,7 @@ public class Seat extends MouseAdapter{
 								seats.setStatus(true);
 								control.updateReservations(reservations);
 								seatcontrol.updateSeats(seats);
-
+								myBooking.moveToPage("pp3");
 							}else if (IDnumStored!=null) {
 								Reservations reservations = control.getReservationsInformByID(IDnumStored);
 								coursework.Entity.Seat seats = seatcontrol.getStatusBySeat(option);
@@ -139,9 +139,8 @@ public class Seat extends MouseAdapter{
 								seats.setStatus(true);
 								control.updateReservations(reservations);
 								seatcontrol.updateSeats(seats);
+								myBooking.moveToPage("pp3");
 							}
-//							confirmSeat =  1;
-//							seatcontrol.getStatusBySeat(option).setStatus(true);
 						}else{
 
 						}

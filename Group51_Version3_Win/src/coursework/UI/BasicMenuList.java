@@ -44,7 +44,7 @@ public class BasicMenuList extends JPanel implements actionPerformed {
        JPanel panel20;
        JButton button12;
 
-       public void BasicMenuList() {
+       public void BasicMenuList(MyBooking myBooking) {
               panel1 = new JPanel();
               label1 = new JLabel();
               panel2 = new JPanel();
@@ -267,25 +267,43 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                           }
                                           System.out.println(basicFood);
                                           System.out.println("\n" + basicDrink);
-                                          JOptionPane.showMessageDialog(null, "What you have choosed:  " +
-                                                  "\n\n STAPLE FOOD :  " + basicFood +
-                                                  "\n DRINK :  " + basicDrink);
-                                          PersonalController control = PersonalController.getController();
-                                          if(bookingNumberStored!=null){
-                                                 Reservations reservations = control.getReservationsInfbyBookingnum(bookingNumberStored);
-                                                 ArrayList<String> h = new ArrayList<>();
-                                                 h.add(basicFood);
-                                                 h.add(basicDrink);
-                                                 reservations.setStandardMeal(h);
-                                                 control.updateReservations(reservations);
-                                          }else if (IDnumStored!=null) {
-                                                 Reservations reservations = control.getReservationsInformByID(IDnumStored);
-                                                 ArrayList<String> h = new ArrayList<>();
-                                                 h.add(basicFood);
-                                                 h.add(basicDrink);
-                                                 reservations.setStandardMeal(h);
-                                                 control.updateReservations(reservations);
+                                          if(basicFood!="" || basicFood!="")
+                                          {
+                                                 int getOption= JOptionPane.showConfirmDialog(null, "What you have choosed:  " +
+                                                         "\n\n STAPLE FOOD :  " + basicFood +
+                                                         "\n DRINK :  " + basicDrink);
+                                                 PersonalController control = PersonalController.getController();
+                                                 if(getOption == JOptionPane.YES_OPTION){
+                                                        if(bookingNumberStored!=null){
+                                                               Reservations reservations = control.getReservationsInfbyBookingnum(bookingNumberStored);
+                                                               ArrayList<String> h = new ArrayList<>();
+                                                               h.add(basicFood);
+                                                               h.add(basicDrink);
+                                                               reservations.setStandardMeal(h);
+                                                               control.updateReservations(reservations);
+                                                               myBooking.confirmationUpdate();
+                                                               myBooking.moveToPage("pp4");
+                                                        }else if (IDnumStored!=null) {
+                                                               Reservations reservations = control.getReservationsInformByID(IDnumStored);
+                                                               ArrayList<String> h = new ArrayList<>();
+                                                               h.add(basicFood);
+                                                               h.add(basicDrink);
+                                                               reservations.setStandardMeal(h);
+                                                               control.updateReservations(reservations);
+                                                               myBooking.confirmationUpdate();
+                                                               myBooking.moveToPage("pp4");
+                                                        }
+                                                 }else{
+
+                                                 }
+                                          }else if(basicFood==""&&basicDrink!=""){
+                                                 JOptionPane.showMessageDialog(null, "You didn't choose the basic meal!");
+                                          }else if(basicFood!=""&&basicDrink==""){
+                                                 JOptionPane.showMessageDialog(null, "You didn't choose the basic drink!");
+                                          }else{
+                                                 JOptionPane.showMessageDialog(null, "You didn't choose the basic meal and drink!");
                                           }
+
                                    }
 
                             });

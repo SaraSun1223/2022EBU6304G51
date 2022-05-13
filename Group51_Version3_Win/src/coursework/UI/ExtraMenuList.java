@@ -45,7 +45,7 @@ public class ExtraMenuList extends JPanel {
     JPanel panel20;
     JButton button12;
 
-    public void ExtraMenuList() {
+    public void ExtraMenuList(MyBooking myBooking) {
         panel1 = new JPanel();
         label1 = new JLabel();
         panel2 = new JPanel();
@@ -261,27 +261,36 @@ public class ExtraMenuList extends JPanel {
                         }
                         System.out.println(extraFood);
                         System.out.println("\n" + extraDrink);
-                        JOptionPane.showMessageDialog(null, "What you have choosed:  "+
-                                                                                     "\n\n STAPLE FOOD :  "+extraFood +
-                                                                                     "\n DRINK :  "+extraDrink);
+
                         PersonalController control = PersonalController.getController();
                         if(extraFood!=""||extraDrink!=""){
-                            if(bookingNumberStored!=null){
-                                Reservations reservations = control.getReservationsInfbyBookingnum(bookingNumberStored);
-                                ArrayList<String> h = new ArrayList<>();
-                                h.add(extraFood);
-                                h.add(extraDrink);
-                                reservations.setIfExtraMeal(true);
-                                reservations.setExtraMealName(h);
-                                control.updateReservations(reservations);
-                            }else if (IDnumStored!=null) {
-                                Reservations reservations = control.getReservationsInformByID(IDnumStored);
-                                ArrayList<String> h = new ArrayList<>();
-                                h.add(extraFood);
-                                h.add(extraDrink);
-                                reservations.setIfExtraMeal(true);
-                                reservations.setExtraMealName(h);
-                                control.updateReservations(reservations);
+                            int getOption= JOptionPane.showConfirmDialog(null, "What you have choosed:  "+
+                                "\n\n STAPLE FOOD :  "+extraFood +
+                                "\n DRINK :  "+extraDrink);
+                            if(getOption == JOptionPane.YES_OPTION){
+                                if(bookingNumberStored!=null){
+                                    Reservations reservations = control.getReservationsInfbyBookingnum(bookingNumberStored);
+                                    ArrayList<String> h = new ArrayList<>();
+                                    h.add(extraFood);
+                                    h.add(extraDrink);
+                                    reservations.setIfExtraMeal(true);
+                                    reservations.setExtraMealName(h);
+                                    control.updateReservations(reservations);
+                                    myBooking.confirmationUpdate();
+                                    myBooking.moveToPage("pp5");
+                                }else if (IDnumStored!=null) {
+                                    Reservations reservations = control.getReservationsInformByID(IDnumStored);
+                                    ArrayList<String> h = new ArrayList<>();
+                                    h.add(extraFood);
+                                    h.add(extraDrink);
+                                    reservations.setIfExtraMeal(true);
+                                    reservations.setExtraMealName(h);
+                                    control.updateReservations(reservations);
+                                    myBooking.confirmationUpdate();
+                                    myBooking.moveToPage("pp5");
+                                }
+                            }else{
+
                             }
                         }else{
                             int getOption= JOptionPane.showConfirmDialog(null, "Do you confirm not to choose extra meal?" );
@@ -290,10 +299,14 @@ public class ExtraMenuList extends JPanel {
                                     Reservations reservations = control.getReservationsInfbyBookingnum(bookingNumberStored);
                                     reservations.setIfExtraMeal(false);
                                     control.updateReservations(reservations);
+                                    myBooking.confirmationUpdate();
+                                    myBooking.moveToPage("pp5");
                                 }else if (IDnumStored!=null) {
                                     Reservations reservations = control.getReservationsInformByID(IDnumStored);
                                     reservations.setIfExtraMeal(false);
                                     control.updateReservations(reservations);
+                                    myBooking.confirmationUpdate();
+                                    myBooking.moveToPage("pp5");
                                 }
                             }else{
 

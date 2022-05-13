@@ -3,6 +3,7 @@ import coursework.Controller.PersonalController;
 import coursework.Entity.Passenger;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 /*import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -79,8 +80,9 @@ public class MyBooking extends MouseAdapter {
         pp3 = new BasicMenuList();
         pp4 = new ExtraMenuList();
         pp5 = new JPanel();
-        pp6 = new Payment();
+        pp6 = new Payment(this);
         pp7 = new Confirmations(jfra);
+
         label1 = new JLabel("Booked Flight Information",JLabel.CENTER);
         label1.setFont(new Font("Dialog", Font.PLAIN, 13));
         label2 = new JLabel("London Heathrow Airport");
@@ -182,20 +184,20 @@ public class MyBooking extends MouseAdapter {
 		lab2= new JLabel("*Blue-Optional");
 		
 		B1 = new JButton("Save");
+
 		Seat obj1=new Seat();
-        obj1.Action(B1);
+        obj1.Action(B1,this);
 		obj1.Seat1(t2);
 		t1.add(lab1);
 		t3.add(lab2);
-		//t3.add(lab3);
 		t3.add(B1);
 		pp2.setPreferredSize(new Dimension(50, 0));
 		pp2.add(t1,BorderLayout.NORTH);
 		pp2.add(t2,BorderLayout.WEST);
 		pp2.add(t3,BorderLayout.EAST);
-//        if(confirmSeat == 1){
-//            moveToPage("pp3");
-//        }
+
+
+
         pp5.setLayout(new BorderLayout());//Choose the seat
 		
         t4 = new JPanel();
@@ -208,7 +210,7 @@ public class MyBooking extends MouseAdapter {
 		B2 = new JButton("Save");
 
 		ExtraSeat obj2=new ExtraSeat();
-        obj2.Action(B2);
+        obj2.Action(B2,this);
 
 		obj2.Seat2(t5);
 		t4.add(lab3);
@@ -220,9 +222,9 @@ public class MyBooking extends MouseAdapter {
 		pp5.add(t5,BorderLayout.WEST);
 		pp5.add(t6,BorderLayout.EAST);
 		
-        pp3.BasicMenuList();
+        pp3.BasicMenuList(this);
         pp3.setVisible(true); //Choose the meals
-        pp4.ExtraMenuList();
+        pp4.ExtraMenuList(this);
         pp4.setVisible(true);
         pp6.setVisible(true);
         pp7.setVisible(true);
@@ -257,7 +259,21 @@ public class MyBooking extends MouseAdapter {
         p2.add(label2,BorderLayout.WEST);
         p2.add(label1,BorderLayout.CENTER);
         p3.setLayout(pp);
-        pp1.add(jp1);
+
+        //first panel: add next step button and information in it
+        JPanel pp1nextp = new JPanel();
+        pp1nextp.setBackground(Color.white);
+        JButton pp1next = new JButton("Next Step");
+        pp1nextp.add(pp1next);
+        pp1next.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pp.show(p3,"pp2");
+            }
+        });
+        pp1.add(jp1, BorderLayout.CENTER);
+        pp1.add(pp1nextp,BorderLayout.SOUTH);
+
 
         p3.add(pp1,"pp1");
         p3.add(pp2,"pp2");
@@ -297,7 +313,8 @@ public class MyBooking extends MouseAdapter {
     }
     public void confirmationUpdate(){
         pp7 = new JPanel();
-        pp6 = new Payment();
+        pp6 = new Payment(this
+        );
         pp7 = new Confirmations(jfra);
         p3.add(pp7,"pp7");
         p3.add(pp6,"pp6");

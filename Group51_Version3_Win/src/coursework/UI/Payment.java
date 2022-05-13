@@ -3,6 +3,7 @@ import coursework.Controller.MenuController;
 import coursework.Controller.PersonalController;
 import coursework.Controller.SeatController;
 import coursework.Entity.Reservations;
+import coursework.backend.dblayer.DataManager;
 import coursework.backend.dblayer.MenuManager;
 import org.apache.commons.lang3.StringUtils;
 
@@ -48,7 +49,7 @@ public class Payment extends JPanel{
     //String[] Names = {"Choices","Price","Number"};
     //String[][] Info;
 
-    public  Payment(){
+    public  Payment(MyBooking myBooking){
         this.setLayout(new GridLayout(2,1));
         this.setBackground(Color.white);
 
@@ -250,6 +251,7 @@ public class Payment extends JPanel{
                 if(cardnum.getText().length()==19 )
                 {
                     JOptionPane.showMessageDialog(null,"You have paid successfully");
+                    myBooking.moveToPage("pp7");
                 }else if(cardnum.getText().length()!=19 )
                 {
                     JOptionPane.showMessageDialog(null,"Sorry!"+"\nThe Card Number is wrong!");

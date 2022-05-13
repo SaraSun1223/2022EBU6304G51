@@ -95,7 +95,7 @@ public class ExtraSeat extends MouseAdapter{
 		}
 
 
-	public void Action(JButton b2) {
+	public void Action(JButton b2, MyBooking myBooking) {
 		b2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -114,6 +114,8 @@ public class ExtraSeat extends MouseAdapter{
 							seats.setStatus(true);
 							control.updateReservations(reservations);
 							seatcontrol.updateSeats(seats);
+							myBooking.confirmationUpdate();
+							myBooking.moveToPage("pp6");
 						}else if (IDnumStored!=null) {
 							Reservations reservations = control.getReservationsInformByID(IDnumStored);
 							coursework.Entity.Seat seats = seatcontrol.getStatusBySeat(option);
@@ -122,7 +124,8 @@ public class ExtraSeat extends MouseAdapter{
 							seats.setStatus(true);
 							control.updateReservations(reservations);
 							seatcontrol.updateSeats(seats);
-
+							myBooking.confirmationUpdate();
+							myBooking.moveToPage("pp6");
 						}
 					}else{
 
@@ -135,10 +138,14 @@ public class ExtraSeat extends MouseAdapter{
 							Reservations reservations = control.getReservationsInfbyBookingnum(bookingNumberStored);
 							reservations.setIfExtraRoom(false);
 							control.updateReservations(reservations);
+							myBooking.confirmationUpdate();
+							myBooking.moveToPage("pp6");
 						}else if (IDnumStored!=null) {
 							Reservations reservations = control.getReservationsInformByID(IDnumStored);
 							reservations.setIfExtraRoom(false);
 							control.updateReservations(reservations);
+							myBooking.confirmationUpdate();
+							myBooking.moveToPage("pp6");
 						}
 					}else{
 
