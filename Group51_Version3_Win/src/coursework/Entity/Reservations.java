@@ -1,6 +1,7 @@
 package coursework.Entity;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Reservations {
     //
@@ -57,21 +58,31 @@ public class Reservations {
         String c = new String();
         if(status){
             c = "Check-in";
+        }else{
+            c="Not check-in";
         }
 
-        String [] a = new String[8];
+        String [] a = new String[9];
         a[0] = "BookingNum:" + bookingNum;
-        a[1] = "Meal selected:" + standardMeal;
+        a[1] = "Meal selected:";
+        for(int i = 0 ; i < standardMeal.size() ;  i++){
+            a[1]+=standardMeal.get(i)+"  ";
+            System.out.println(a[1]);
+        }
         a[2] = "BaggageNum:" + baggageNum;
         a[3] = "Baggage Weight:" + baggageWeight;
-        a[4] = "Gate:" + gate;
-        a[5] = "Status:"+c;
-        a[6] = "Has Extra Meal: " + ifExtraMeal;
+        a[4] = "Has Extra Meal: " + ifExtraMeal;
         if(ifExtraMeal){
-            a[7] = "Extra Meal:"+extraMealName;
+            a[5] = "Extra Meal:";
+            for(int i = 0 ; i < extraMealName.size() ;  i++){
+                a[5]+=extraMealName.get(i)+"  ";
+            }
         }else{
-            a[7] = "";
+            a[5] = "";
         }
+        a[6]="   ";
+        a[7] = "Status:"+c;
+        a[8] = "Gate:" + gate;
         return a;
     }
     public coursework.backend.model.Reservations convert()

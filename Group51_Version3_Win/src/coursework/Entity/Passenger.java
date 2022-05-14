@@ -143,11 +143,10 @@ public class Passenger {
     }
     public String[] confirmationPrint(){
         String c = new String();
-        String [] a = new String[4];
+        String [] a = new String[3];
         a[0] = "Surname:" + surname;
         a[1] = "First Name:" + firstName;
         a[2] = "Phone Number: " + phoneNumber;
-        a[3] = "Status:"+status;
         return a;
     }
 

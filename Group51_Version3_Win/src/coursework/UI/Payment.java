@@ -45,9 +45,9 @@ public class Payment extends JPanel{
     JPanel phead;
     JPanel pmeal;
     JPanel pseat;
-    //JTable extraoptionInfo;
-    //String[] Names = {"Choices","Price","Number"};
-    //String[][] Info;
+    JTable mealTable;
+    String[] Names = {"Food Type","Food Select","Price"};
+    String[][] Info;
 
     public  Payment(MyBooking myBooking){
         this.setLayout(new GridLayout(2,1));
@@ -70,39 +70,55 @@ public class Payment extends JPanel{
 
         }
 
-//        coursework.Entity.Seat seats = seatcontrol.getStatusBySeat(reservations.getGate());
 
         pmeal = new JPanel();
         pmeal.setBorder(new TitledBorder("Airline Food Bill"));
         pmeal.setBackground(Color.white);
         pmeal.setSize(150,150);
+
         assert reservations != null;
-        pmeal.add(new JLabel("Basic Food:   "+reservations.getStandardMeal()));
-        pmeal.add(new JLabel("Extra Food:   "+reservations.getExtraMealName()));
+
+        int length = reservations.getExtraMealName().size();
+        Info = new String[2+length][3];
+        Info[0][0] = "Basic Food";
+        Info[0][1] = reservations.getStandardMeal().get(0);
+        Info[0][2] = "0";
+        Info[1][0] = "Basic Food";
+        Info[1][1] = reservations.getStandardMeal().get(1);
+        Info[1][2] = "0";
+        for(int i = 0;i<length;i++){
+            Info[i+2][0] = "Extra Food";
+            Info[i+2][1] = reservations.getExtraMealName().get(i);
+            if (menuController.getPriceByMenuName(reservations.getExtraMealName().get(i))!=null){
+                Double price = menuController.getPriceByMenuName(reservations.getExtraMealName().get(i)).getMenuPrice();
+                Info[i+2][2] = price.toString();
+            }
+        }
+
+        mealTable = new JTable(new MyTable1(Names,Info));
+        mealTable.setPreferredScrollableViewportSize(new Dimension(700,34));
+
+        pmeal.add(mealTable.getTableHeader(),BorderLayout.NORTH);
+        pmeal.add(mealTable,BorderLayout.CENTER);
         double TotalBill = 0;
         for(int i=0; i<reservations.getExtraMealName().size();i++){
             if (menuController.getPriceByMenuName(reservations.getExtraMealName().get(i))!=null){
                 TotalBill += menuController.getPriceByMenuName(reservations.getExtraMealName().get(i)).getMenuPrice();
             }
         }
-        pmeal.add(new JLabel("Amount Total:    "+TotalBill));
-
-
-        /*
-        extraoptionInfo = new JTable(new MyTable1(Names,Info));
-        extraoptionInfo.setPreferredScrollableViewportSize(new Dimension(600,34));
-        extraoptionInfo.getColumnModel().getColumn(0).setPreferredWidth(80);
-        extraoptionInfo.getColumnModel().getColumn(1).setPreferredWidth(80);
-        extraoptionInfo.getColumnModel().getColumn(2).setPreferredWidth(80);
-        pmeal.add(extraoptionInfo.getTableHeader());
-        pmeal.add(extraoptionInfo);
-         */
-
+        JLabel mealPriceLabel = new JLabel("\nAmount Total:    "+TotalBill);
+        mealPriceLabel.setFont(new Font(Font.SERIF,Font.BOLD,15));
+        pmeal.add(mealPriceLabel,BorderLayout.SOUTH);
 
         pseat = new JPanel();
+        pseat.setLayout(new FlowLayout());
         pseat.setBorder(new TitledBorder("Bill For Upgrades"));
-        pseat.add(new JLabel("Seat:"+reservations.getGate()));
-        pseat.add(new JLabel("\nClass Fee:"+seatcontrol.getPriceBySeat(reservations.getGate()).getPrice()+".0"));
+        JLabel seatLabel = new JLabel("               Seat:   "+reservations.getGate());
+        seatLabel.setFont(new Font(Font.SERIF,Font.BOLD,15));
+        pseat.add(seatLabel);
+        JLabel seaPriceLabel = new JLabel("\n               Class Fee:"+seatcontrol.getPriceBySeat(reservations.getGate()).getPrice()+".0");
+        seaPriceLabel.setFont(new Font(Font.SERIF,Font.BOLD,15));
+        pseat.add(seaPriceLabel);
         pseat.setBackground(Color.white);
 
         phead = new JPanel();
