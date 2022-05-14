@@ -138,7 +138,7 @@ public class Confirmations extends JPanel{
                 }
             });
         }
-        int rows3[]={7,8};
+        int rows3[]={0,1,2,3,4,5,7,8};
         list3.setCellRenderer(new MyRenderer(rows3,Color.white));
 
         JPanel p1 = new JPanel();
@@ -154,8 +154,8 @@ public class Confirmations extends JPanel{
         p22.setLayout(new GridLayout(2,1));
         p22.add(list1);
         p22.add(list2);
-        p2.add(list3);
         p2.add(p22);
+        p2.add(list3);
 
         p1.add(p2,BorderLayout.CENTER);
         this.setLayout(new BorderLayout());

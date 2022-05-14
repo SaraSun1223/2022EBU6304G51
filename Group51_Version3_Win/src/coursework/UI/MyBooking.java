@@ -132,7 +132,8 @@ public class MyBooking extends MouseAdapter {
                   }
               });
           }
-
+          int[] rows = {0,1,2};
+        list1.setCellRenderer(new MyRenderer(rows,Color.white));
           //---------list2--------
 
           list2 = new JList<>();
@@ -168,7 +169,8 @@ public class MyBooking extends MouseAdapter {
                   }
               });
           }
-
+          int[] rows1 = {0,1,2,3};
+          list2.setCellRenderer(new MyRenderer(rows1,Color.white));
         pp = new CardLayout(5,5);
 //
         jp1.setBackground(new Color(60,100,210));
@@ -242,6 +244,7 @@ public class MyBooking extends MouseAdapter {
         jp2.add(list1);
         jp2.add(list2);
         jp1.add(jp2);
+        jp1.setBorder(new MyLineBorder(Color.white,8,true));
         p1.setLayout(new BorderLayout());
         p1.add(new JScrollPane(menu),BorderLayout.CENTER);
         back = new JButton("Back");
@@ -271,8 +274,8 @@ public class MyBooking extends MouseAdapter {
                 pp.show(p3,"pp2");
             }
         });
-        pp1.add(jp1, BorderLayout.CENTER);
-        pp1.add(pp1nextp,BorderLayout.SOUTH);
+        pp1.add(jp1, BorderLayout.NORTH);
+        pp1.add(pp1nextp,BorderLayout.CENTER);
 
 
         p3.add(pp1,"pp1");
