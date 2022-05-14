@@ -11,53 +11,70 @@ import static coursework.UI.ButtonListener2test.bookingNumberStored;
 import static coursework.UI.MyButtonListener.IDnumStored;
 
 public class ExtraSeat extends MouseAdapter{
-	
+
 	JButton btns[];
+
 	int num;
+
 	int state=-1;
-    String option="";
+	String option="";
 	SeatController seatcontrol = SeatController.getController();
 	public void Seat2(JPanel t2){
 
-        num =40;
-	    JPanel pans[] = new JPanel[num];
-        btns = new JButton[num];		
-        t2.setLayout(new GridLayout(10,4));
-		
-        for (int i = 0; i <num; i++) {
-            String seat;
+		num =40;
+		JPanel pans[] = new JPanel[num];
+		btns = new JButton[num];
+		ImageIcon icon = new ImageIcon("./Imgs/seat.png");
+		JPanel p = new JPanel();
+		p.setPreferredSize(new Dimension(280,800));
+		p.setLayout(new GridLayout(10,4));
+
+		for (int i = 0; i <num; i++) {
+			String seat;
 			int number=i/4+1;
 			if((i+1)%4==1){
-			    seat= "S"+number+"A";}
+				seat= "S"+number+"A";}
 			else if((i+1)%4==2){
-			    seat= "S"+number+"B";}
+				seat= "S"+number+"B";}
 			else if((i+1)%4==3){
-			    seat= "S"+number+"C";}
+				seat= "S"+number+"C";}
 			else{
-			    seat= "S"+number+"D";}
-            btns[i] = new JButton(seat);   
-            pans[i] = new JPanel();
-            btns[i].setSize(5, 5);
-            btns[i].setBackground(new Color(170,100,110));
-            btns[i].setForeground(Color.white);
+				seat= "S"+number+"D";}
+			btns[i] = new JButton();
+			btns[i].setSize(45, 45);
+			Image temp = icon.getImage().getScaledInstance(btns[i].getWidth(),
+					btns[i].getHeight(), icon.getImage().SCALE_DEFAULT);
+			icon = new ImageIcon(temp);
+			btns[i] = new JButton(seat,icon);
+			btns[i].setHorizontalTextPosition(SwingConstants.CENTER);
+			pans[i] = new JPanel();
+			pans[i] = new JPanel();
+
+			btns[i].setBackground(new Color(170,100,110));
+			btns[i].setForeground(Color.white);
 			btns[i].addMouseListener(this);
-            pans[i].add(btns[i]);
-			t2.add(pans[i]); 
-			
-			
+			pans[i].add(btns[i]);
+			p.add(pans[i]);
+
+
 		}
+		JScrollPane jsp = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		jsp.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		jsp.setViewportView(p);
+		jsp.setPreferredSize(new Dimension(320,380));
+		t2.add(jsp);
 		for (int i = 0; i <num; i++) {
 
 			if(seatcontrol.getStatusBySeat(btns[i].getText()).getStatus()){
-				btns[i].setBackground(new Color(200, 200, 200));
+				btns[i].setBackground(new Color(120, 120, 120));
 			}
 
 		}
-    }
+	}
 	public void mouseClicked(MouseEvent e){
-        //Botton list
+		//Botton list
 		for(int i = 0; i <num; i++){
-		    if(e.getSource()==btns[i]){
+			if(e.getSource()==btns[i]){
 				if(state==-1){
 					if(seatcontrol.getStatusBySeat(btns[i].getText()).getStatus()){
 
@@ -90,9 +107,9 @@ public class ExtraSeat extends MouseAdapter{
 						option = btns[i].getText();
 					}
 				}
-		    }
+			}
 		}
-		}
+	}
 
 
 	public void Action(JButton b2, MyBooking myBooking) {
