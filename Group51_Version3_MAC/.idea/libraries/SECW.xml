@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="SECW">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/out/artifacts/SECW_jar/SECW.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
