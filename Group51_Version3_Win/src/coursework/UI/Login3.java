@@ -1,11 +1,13 @@
 package coursework.UI;
+import coursework.Controller.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.BorderLayout;
-import static javax.swing.BorderFactory.*;
+
 
 /**
  * This is class for The Staff Login.
@@ -32,8 +34,8 @@ public class Login3 extends JFrame {
 
     public Login3() {
         this.setTitle("Check-in");
-        this.setLocation(400, 0);
-        this.setSize(760, 480);
+        this.setLocation(400, 150);
+        this.setSize(800, 500);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -99,8 +101,10 @@ public class Login3 extends JFrame {
         content.add(heading);
 
         text = new JTextArea(5, 50);
-        text.setText("       Please click the 'start scanning' button and\n" +
-                "       place your ID document on the machine\n       for automatic scanning");
+        text.setText("""
+                Please click the 'start scanning' button and
+                place your ID document on the machine
+                for automatic scanning""".indent(7));
         text.setFont(new Font(null, Font.BOLD, 11));
         text.setEditable(false);
         content.add(text);
@@ -188,23 +192,54 @@ class ButtonListener3 implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getActionCommand().equals("Start Scanning")) {
-            jf.setVisible(false);
-            new MyBooking().jfra.setVisible(true);
-            // to de added
-        }
-        else if (e.getActionCommand().equals("Enter booking number")) {
-            jf.setVisible(false);
-            new Login2test().setVisible(true);
-        }
-        else if(e.getActionCommand().equals("Back")){
-            jf.setVisible(false);
-            new JFrameTest().setVisible(true);
-        }
-        else {
-            jf.setVisible(false);
-            new Login1().setVisible(true);
+        switch (e.getActionCommand()) {
+            case "Start Scanning" -> {
+                int c = JOptionPane.showConfirmDialog(null,
+                        """
+                                The following is the scanned ID information:
+
+                                Surname: ZHANG
+                                First Name: JIAYI
+                                ID number:20****3335""",
+                        "Confirm to Check in?", JOptionPane.YES_NO_OPTION);
+                if (c == 0) {
+                    loginCheck();
+                }
+            }
+            case "Enter booking number" -> {
+                jf.setVisible(false);
+                new Login2test().setVisible(true);
+            }
+            case "Back" -> {
+                jf.setVisible(false);
+                new JFrameTest().setVisible(true);
+            }
+            default -> {
+                jf.setVisible(false);
+                new Login1().setVisible(true);
+            }
         }
     }
 
+
+    public static String IDnumStored;
+    public static String surnameStored;
+    public static String bookingNumberStored;
+    public void loginCheck(){
+        String surname= "ZHANG";
+        String idNo="2019213335";
+        String bookingNumber = "000004";
+        PersonalController controller = PersonalController.getController();
+        int status = controller.checkPassenger(surname,idNo);
+        if(status==2){
+            JOptionPane.showMessageDialog(jf, "Sorry, the surname and ID number scanned doesn't exist.", "Login failed",
+                    JOptionPane.WARNING_MESSAGE);
+        }else {
+            jf.setVisible(false); // exit current frame
+            IDnumStored = idNo;
+            surnameStored = surname;
+            bookingNumberStored =  bookingNumber;
+            new MyBooking().jfra.setVisible(true);
+        }
+    }
 }

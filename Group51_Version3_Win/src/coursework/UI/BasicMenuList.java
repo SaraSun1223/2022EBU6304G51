@@ -1,5 +1,6 @@
 package coursework.UI;
 import coursework.Controller.PersonalController;
+import coursework.Entity.Menu;
 import coursework.Entity.Passenger;
 import coursework.Entity.Reservations;
 import java.util.ArrayList;
@@ -138,8 +139,9 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                                  button6.setIcon(new ImageIcon("./Imgs/Hamburger  .jpeg"));
 
                                                  //------JRadiobutton----
-                                                 Hamburger.setText("Beef Hamburger");
+                                                 Hamburger.setText("Hamburger");
                                                  Hamburger.setHorizontalAlignment(SwingConstants.CENTER);
+                                                 Hamburger.setBackground(Color.white);
 
                                           }
                                           {
@@ -150,6 +152,7 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                                  //------JRadioButton----
                                                  Rice.setText("Rice");
                                                  Rice.setHorizontalAlignment(SwingConstants.CENTER);
+                                                 Rice.setBackground(Color.white);
                                           }
 
                                           {
@@ -160,6 +163,7 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                                  //-----JRadioButton----
                                                  Pasta.setText("Pasta");
                                                  Pasta.setHorizontalAlignment(SwingConstants.CENTER);
+                                                 Pasta.setBackground(Color.white);
                                           }
                                           panel11.add(button6, new GridLayout());
                                           panel11.add(button7,new GridLayout());
@@ -198,20 +202,23 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                                  //-----JRadioButton------
                                                  Juice.setHorizontalAlignment(SwingConstants.CENTER);
                                                  Juice.setText("Juice");
+                                                 Juice.setBackground(Color.white);
                                           }
                                           {
                                                  //-----JRadioButton------
                                                  Milk.setHorizontalAlignment(SwingConstants.CENTER);
                                                  Milk.setText("Milk");
+                                                 Milk.setBackground(Color.white);
                                                  //-----button10-------
                                                  button10.setBackground(Color.white);
                                                  button10.setIcon(new ImageIcon("./Imgs/Milk.jpg"));
                                           }
                                           {
                                                  //----JRadioButton----
-                                                 CoffeeAmerican.setText("Coffee American");
+                                                 CoffeeAmerican.setText("Coffee");
                                                  CoffeeAmerican.setBackground(Color.white);
                                                  CoffeeAmerican.setHorizontalAlignment(SwingConstants.CENTER);
+                                                 CoffeeAmerican.setBackground(Color.white);
                                                  //---- button11 ----
                                                  button11.setBackground(Color.white);
                                                  button11.setIcon(new ImageIcon("./Imgs/Coffee American.jpg"));

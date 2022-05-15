@@ -139,6 +139,7 @@ public class ExtraMenuList extends JPanel {
                             //------JRadioButton----
                             Tacco.setText("Tacco");
                             Tacco.setHorizontalAlignment(SwingConstants.CENTER);
+                            Tacco.setBackground(Color.white);
 
                             //------button6------
                             button6.setBackground(Color.white);
@@ -146,16 +147,18 @@ public class ExtraMenuList extends JPanel {
                         }
                         {
                             //------JRadioButton----
-                            Cake.setText("Tiramisu Cake");
+                            Cake.setText("Tiramisu");
                             Cake.setHorizontalAlignment(SwingConstants.CENTER);
+                            Cake.setBackground(Color.white);
                             //------button7------
                             button7.setBackground(Color.white);
                             button7.setIcon(new ImageIcon("./Imgs/Tiramisu Cake.jpg"));
                         }
                         {
                             //------JRadioButton----
-                            Lasagna.setText("Cheese Lasagna");
+                            Lasagna.setText("Lasagna");
                             Lasagna.setHorizontalAlignment(SwingConstants.CENTER);
+                            Lasagna.setBackground(Color.white);
                             //------button8------
                             button8.setBackground(Color.white);
                             button8.setIcon(new ImageIcon("./Imgs/Cheese Lasagna.jpg"));
@@ -191,7 +194,8 @@ public class ExtraMenuList extends JPanel {
                         {
                             //-----JRadioButton------
                             Latte.setHorizontalAlignment(SwingConstants.CENTER);
-                            Latte.setText("Coffee Latte");
+                            Latte.setText("Latte");
+                            Latte.setBackground(Color.white);
                             //-----button9-------
                             button9.setBackground(Color.white);
                             button9.setIcon(new ImageIcon("./Imgs/Coffee Latte.jpg"));
@@ -199,7 +203,8 @@ public class ExtraMenuList extends JPanel {
                         {
                             //-----JRadioButton------
                             Tea.setHorizontalAlignment(SwingConstants.CENTER);
-                            Tea.setText("Shaken Tea Lemonade");
+                            Tea.setText("Lemon Tea");
+                            Tea.setBackground(Color.white);
                             //-----button10-------
                             button10.setBackground(Color.white);
                             button10.setIcon(new ImageIcon("./Imgs/Shaken Tea Lemonade.jpg"));
@@ -209,6 +214,7 @@ public class ExtraMenuList extends JPanel {
                             Frappuccino.setText("Frappuccino");
                             Frappuccino.setBackground(Color.white);
                             Frappuccino.setHorizontalAlignment(SwingConstants.CENTER);
+                            Frappuccino.setBackground(Color.white);
                             //---- button11 ----
                             button11.setBackground(Color.white);
                             button11.setIcon(new ImageIcon("./Imgs/Frappuccino.jpg"));

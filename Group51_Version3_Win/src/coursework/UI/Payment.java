@@ -131,7 +131,7 @@ public class Payment extends JPanel{
         //heading
         p1 = new JPanel();
         heading = new JLabel("Enter your bank card information to complete the payment:");
-        heading.setToolTipText("To pay for your extra option");
+        heading.setToolTipText("To pay for your extra options");
         heading.setForeground(Color.white);
         heading.setFont(new Font("", Font.BOLD, 10));
         heading.setHorizontalAlignment(SwingConstants.CENTER);
@@ -172,7 +172,7 @@ public class Payment extends JPanel{
 
 
         cardnum = new JTextField(20);
-        cardnum.addFocusListener(new JTextFieldHintListener(cardnum,"Card Number"));
+        cardnum.addFocusListener(new JTextFieldHintListener(cardnum,"Please enter the 19-bit Card Number"));
         cardnum.addKeyListener(new NumKeyListener(cardnum));
         cardnum.setBorder(BorderFactory.createEtchedBorder());
 
@@ -264,14 +264,82 @@ public class Payment extends JPanel{
         confirm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cardnum.getText().length()==19 )
-                {
-                    JOptionPane.showMessageDialog(null,"You have paid successfully");
-                    myBooking.moveToPage("pp7");
-                }else if(cardnum.getText().length()!=19 )
-                {
-                    JOptionPane.showMessageDialog(null,"Sorry!"+"\nThe Card Number is wrong!");
+                if(checkAll()) {
+                    int c = JOptionPane.showConfirmDialog(null,
+                            "Hava you checked all the information is correct? " +
+                                    "\nYou can't change the information once the information is submitted.",
+                            "Confirm to Pay?", JOptionPane.YES_NO_OPTION);
+                    if (c == 0) {
+                        JOptionPane.showMessageDialog(null, "You have paid successfully");
+                        myBooking.moveToPage("pp7");
+                    }
+                }else {
+                    if(fn.getText().equals("")){
+                        JOptionPane.showMessageDialog(null,
+                                "Please enter the First Name!",
+                                "Missing information!",JOptionPane.ERROR_MESSAGE);
+                        fn.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red),"First Name"));
+                        fn.addFocusListener(new FocusAdapter() {
+                            @Override
+                            public void focusGained(FocusEvent e) {
+                                fn.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+                                fn.repaint();
+                            }
+                            @Override
+                            public void focusLost(FocusEvent e){
+                            }
+                        });
+                    }
+                    if(ln.getText().equals("")){
+                        JOptionPane.showMessageDialog(null,
+                                "Please enter the Last Name!",
+                                "Missing information!",JOptionPane.ERROR_MESSAGE);
+                        ln.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red),"Last Name"));
+                        ln.addFocusListener(new FocusAdapter() {
+                            @Override
+                            public void focusGained(FocusEvent e) {
+                                ln.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+                                ln.repaint();
+                            }
+                            @Override
+                            public void focusLost(FocusEvent e){
+                            }
+                        });
+                    }
+                    if(passwd.getPassword().length==0){
+                        JOptionPane.showMessageDialog(null,
+                                "Please enter the correct password!",
+                                "Missing information!",JOptionPane.ERROR_MESSAGE);
+                        passwd.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red),"Password"));
+                        passwd.addFocusListener(new FocusAdapter() {
+                            @Override
+                            public void focusGained(FocusEvent e) {
+                                passwd.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+                                passwd.repaint();
+                            }
+                            @Override
+                            public void focusLost(FocusEvent e){
+                            }
+                        });
+                    }
+                    if(cardnum.getText().length()!=19){
+                        JOptionPane.showMessageDialog(null,
+                                "Please enter the correct card number!",
+                                "Wrong information!",JOptionPane.ERROR_MESSAGE);
+                        cardnum.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red),"Card Number"));
+                        cardnum.addFocusListener(new FocusAdapter() {
+                            @Override
+                            public void focusGained(FocusEvent e) {
+                                cardnum.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+                                cardnum.repaint();
+                            }
+                            @Override
+                            public void focusLost(FocusEvent e){
+                            }
+                        });
+                    }
                 }
+
             }
         });
         p2.add(confirm);
@@ -282,5 +350,8 @@ public class Payment extends JPanel{
 
 
     }
-
+    public boolean checkAll(){
+        return !(fn.getText().equals("")||ln.getText().equals("")||
+                 passwd.getPassword().length==0||cardnum.getText().length()!=19);
+    }
 }

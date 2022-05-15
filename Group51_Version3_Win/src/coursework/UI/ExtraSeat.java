@@ -26,6 +26,7 @@ public class ExtraSeat extends MouseAdapter{
 		btns = new JButton[num];
 		ImageIcon icon = new ImageIcon("./Imgs/seat.png");
 		JPanel p = new JPanel();
+		p.setBackground(Color.white);
 		p.setPreferredSize(new Dimension(280,800));
 		p.setLayout(new GridLayout(10,4));
 
@@ -50,10 +51,11 @@ public class ExtraSeat extends MouseAdapter{
 			pans[i] = new JPanel();
 			pans[i] = new JPanel();
 
-			btns[i].setBackground(new Color(170,100,110));
+			btns[i].setBackground(new Color(191,51,51));
 			btns[i].setForeground(Color.white);
 			btns[i].addMouseListener(this);
 			pans[i].add(btns[i]);
+			pans[i].setBackground(Color.white);
 			p.add(pans[i]);
 
 
@@ -62,11 +64,12 @@ public class ExtraSeat extends MouseAdapter{
 		jsp.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		jsp.setViewportView(p);
 		jsp.setPreferredSize(new Dimension(320,380));
+		jsp.setBackground(Color.white);
 		t2.add(jsp);
 		for (int i = 0; i <num; i++) {
 
 			if(seatcontrol.getStatusBySeat(btns[i].getText()).getStatus()){
-				btns[i].setBackground(new Color(120, 120, 120));
+				btns[i].setBackground(new Color(135, 135, 135));
 			}
 
 		}
@@ -80,7 +83,7 @@ public class ExtraSeat extends MouseAdapter{
 
 					}
 					else{
-						btns[i].setBackground(new Color(55,45,140));
+						btns[i].setBackground(new Color(131,67,67));
 						state=i;
 						option=btns[i].getText();
 
@@ -91,7 +94,7 @@ public class ExtraSeat extends MouseAdapter{
 
 					}
 					else {
-						btns[state].setBackground(new Color(170,100,110));
+						btns[state].setBackground(new Color(191,51,51));
 						state = -1;
 						option = "";
 					}
@@ -101,8 +104,8 @@ public class ExtraSeat extends MouseAdapter{
 
 					}
 					else {
-						btns[state].setBackground(new Color(170,100,110));
-						btns[i].setBackground(new Color(55, 45, 140));
+						btns[state].setBackground(new Color(191,51,51));
+						btns[i].setBackground(new Color(131, 67, 67));
 						state = i;
 						option = btns[i].getText();
 					}

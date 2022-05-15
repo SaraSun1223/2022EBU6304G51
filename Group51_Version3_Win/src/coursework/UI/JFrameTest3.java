@@ -27,8 +27,8 @@ public class JFrameTest3 extends JFrame {
 	public JFrameTest3() {
 
 		this.setTitle("Welcome");
-		this.setSize(760, 480);
-		this.setLocation(400, 0);
+		this.setSize(800, 500);
+		this.setLocation(400, 150);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);

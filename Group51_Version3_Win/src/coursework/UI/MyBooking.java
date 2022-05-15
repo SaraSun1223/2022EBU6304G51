@@ -3,13 +3,7 @@ import coursework.Controller.PersonalController;
 import coursework.Entity.Passenger;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-/*import javax.swing.JOptionPane;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.AbstractTableModel;  */
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -109,7 +103,7 @@ public class MyBooking extends MouseAdapter {
                   @Override
                   public int getSize() {
                       return value.length;
-                  };
+                  }
 
                   @Override
                   public String getElementAt(int i) {
@@ -124,7 +118,7 @@ public class MyBooking extends MouseAdapter {
                   @Override
                   public int getSize() {
                       return value.length;
-                  };
+                  }
 
                   @Override
                   public String getElementAt(int i) {
@@ -145,7 +139,7 @@ public class MyBooking extends MouseAdapter {
                   @Override
                   public int getSize() {
                       return value.length;
-                  };
+                  }
 
                   @Override
                   public String getElementAt(int i) {
@@ -161,7 +155,7 @@ public class MyBooking extends MouseAdapter {
                   @Override
                   public int getSize() {
                       return value.length;
-                  };
+                  }
 
                   @Override
                   public String getElementAt(int i) {
@@ -179,8 +173,11 @@ public class MyBooking extends MouseAdapter {
         pp2.setLayout(new BorderLayout());//Choose the seat
 		
         t1 = new JPanel();
+        t1.setBackground(Color.white);
         t2 = new JPanel();
+        t2.setBackground(Color.white);
 		t3 = new JPanel();
+		t3.setBackground(Color.white);
 		
 		lab1 = new JLabel("Select the seat you want and click Save. Once confirmed, it cannot be changed.");
 		lab2= new JLabel("*Blue-Optional");
@@ -194,6 +191,7 @@ public class MyBooking extends MouseAdapter {
 		t3.add(lab2);
 		t3.add(B1);
 		pp2.setPreferredSize(new Dimension(50, 0));
+		pp2.setBackground(Color.white);
 		pp2.add(t1,BorderLayout.NORTH);
 		pp2.add(t2,BorderLayout.WEST);
 		pp2.add(t3,BorderLayout.EAST);
@@ -201,13 +199,17 @@ public class MyBooking extends MouseAdapter {
 
 
         pp5.setLayout(new BorderLayout());//Choose the seat
-		
+		pp5.setBackground(Color.white);
+
         t4 = new JPanel();
+        t4.setBackground(Color.white);
         t5 = new JPanel();
+        t5.setBackground(Color.white);
 		t6 = new JPanel();
-		
+		t6.setBackground(Color.white);
+
 		lab3 = new JLabel("Select the extra seat you want and click Save.You will pay extra.");
-		lab4= new JLabel("*Pink-Optional");
+		lab4= new JLabel("*Red-Optional");
 		
 		B2 = new JButton("Save");
 
@@ -293,8 +295,8 @@ public class MyBooking extends MouseAdapter {
 
         p2.setPreferredSize(new Dimension(0,30));
 
-        jfra.setLocation(400,10);
-        jfra.setSize(760,480);
+        jfra.setLocation(400,150);
+        jfra.setSize(800,500);
         jfra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jfra.setContentPane(pane);
         jfra.setVisible(true);//set frame visible

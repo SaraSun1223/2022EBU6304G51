@@ -35,8 +35,8 @@ public class Login1 extends JFrame {
 
     public Login1() {
         this.setTitle("Check-in");
-        this.setSize(760, 480);
-        this.setLocation(400, 0);
+        this.setSize(800, 500);
+        this.setLocation(400, 150);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -238,19 +238,36 @@ class JTextFieldHintListener implements FocusListener {
 }
 class NumKeyListener implements KeyListener{
     JTextField text;
+    boolean b1;
+    boolean b2;
 
     public NumKeyListener(JTextField text){
         this.text = text;
     }
+
+    public void check(){
+        if(b1&&b2){
+        JOptionPane.showMessageDialog(null, "Please enter Arabic numerals.", "Input Format Reminder",
+                JOptionPane.WARNING_MESSAGE);}
+    }
+
+
     @Override
     public void keyTyped(KeyEvent e){
         if(text.getText().length()<20) {
-            if (e.getKeyChar() < '0' || e.getKeyChar() > '9') {
+            char c = e.getKeyChar();
+            if (!(c >= '0' && c <= '9')) {
                 System.out.println("char:"+e.getKeyChar());
                 System.out.println("code:"+e.getKeyCode());
+                b1=true;
+                this.check();
                 e.consume();
-                JOptionPane.showMessageDialog(null, "Please enter Arabic numerals.", "Input Format Reminder",
-                        JOptionPane.WARNING_MESSAGE);
+                System.out.println("b1"+b1);
+                System.out.println("b2"+b2);
+                System.out.println("result:"+(b1&&b2));
+            }
+            else{
+                b1=false;
             }
         }
         else{
@@ -262,10 +279,24 @@ class NumKeyListener implements KeyListener{
     }
     @Override
     public void keyPressed(KeyEvent e) {
-
+        if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
+            System.out.println("keypressed");
+            b2=false;
+        }
+        else{
+            b2=true;
+            e.consume();}
     }
     @Override
     public void keyReleased(KeyEvent e){
+        if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
+            System.out.println("keypressed");
+            b2=false;
+        }
+        else {
+            b2 = true;
+            e.consume();}
+
 
     }
 
@@ -275,6 +306,14 @@ class NumKeyListener implements KeyListener{
 
 class LetterKeyListener implements KeyListener{
     JTextField text;
+    boolean b1;
+    boolean b2;
+
+    public void check(){
+        if(b1&&b2){
+            JOptionPane.showMessageDialog(null, "Please enter Capital Letters.", "Input Format Reminder",
+                    JOptionPane.WARNING_MESSAGE);}
+    }
 
     public LetterKeyListener(JTextField text){
         this.text = text;
@@ -285,9 +324,12 @@ class LetterKeyListener implements KeyListener{
             if (e.getKeyChar() < 'A' || e.getKeyChar() > 'Z') {
                     System.out.println("char:"+e.getKeyChar());
                     System.out.println("code:"+e.getKeyCode());
+                    b1=true;
+                    this.check();
                     e.consume();
-                    JOptionPane.showMessageDialog(null, "Please enter capital letters.", "Input Format Reminder",
-                            JOptionPane.WARNING_MESSAGE);
+            }
+            else{
+                b1=false;
             }
         }
         else{
@@ -299,11 +341,23 @@ class LetterKeyListener implements KeyListener{
     }
     @Override
     public void keyPressed(KeyEvent e) {
-
+        if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
+            System.out.println("keypressed");
+            b2=false;
+        }
+        else{
+            b2=true;
+            e.consume();}
     }
     @Override
     public void keyReleased(KeyEvent e){
-
+        if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
+            System.out.println("keypressed");
+            b2=false;
+        }
+        else{
+            b2=true;
+            e.consume();}
     }
 
 

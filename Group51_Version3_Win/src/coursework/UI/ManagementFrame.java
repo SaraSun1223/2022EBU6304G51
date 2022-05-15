@@ -192,7 +192,6 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
         SeatInftable.setPreferredScrollableViewportSize(new Dimension(600,34));
         JScrollPane s4 = new JScrollPane(SeatInftable);
 
-
         menu1=new MenuModel(1);
         menu= new JList<>(menu1);
 		menu.setBackground(new Color(60,100,210));
@@ -202,14 +201,12 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
         label1.setForeground(Color.white);
         label2.setForeground(Color.white);
 
-
         p1.add(new JScrollPane(menu));
         p2.setLayout(new BorderLayout());
         p2.add(label2,BorderLayout.WEST);
         p2.add(label1,BorderLayout.CENTER);
         p1.setBackground(new Color(60,100,210));
         p2.setBackground(new Color(60,100,210));
-
 
 //        pssg
         pp1.setLayout(new BorderLayout());
@@ -295,8 +292,8 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
 		
 		p2.setPreferredSize(new Dimension(0,30));
 
-        jfra.setLocation(400,10);
-        jfra.setSize(760,480);
+        jfra.setLocation(400,150);
+        jfra.setSize(800,500);
         jfra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jfra.setContentPane(pane);
         jfra.setVisible(true);//set frame visible

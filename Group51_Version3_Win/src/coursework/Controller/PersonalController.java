@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.*;
 
 import coursework.backend.dblayer.*;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.text.html.HTMLDocument;
 
@@ -37,6 +38,36 @@ public class PersonalController implements PassengerUtils,StaffUtils{
             {
                 res.add(i);
             }
+            else if(i.getSurname().equals(key))
+            {
+                res.add(i);
+            }
+            else if(i.getFirstName().equals(key))
+            {
+                res.add(i);
+            }
+            else if((i.getFirstName()+" "+ i.getSurname()).equals(key))
+            {
+                res.add(i);
+            }
+            else if(i.getIdNumber().equals(key))
+            {
+                res.add(i);
+            }
+            else if(i.getBookingNumber().equals(key))
+            {
+                res.add(i);
+            }
+            else if(i.getPhoneNumber().equals(key))
+            {
+                res.add(i);
+            }
+            else if(Boolean.toString(i.getStatus()).equals(key))
+            {
+                res.add(i);
+            }
+            else
+            {}
         }
         return res;
     }
@@ -52,6 +83,41 @@ public class PersonalController implements PassengerUtils,StaffUtils{
             {
                 res.add(i);
             }
+            else if((this.getPassengerInform(i.getBookingNum()).getFirstName()+" "+
+                    this.getPassengerInform(i.getBookingNum()).getSurname()).equals(key))
+            {
+                res.add(i);
+            }
+            else if((this.getPassengerInform(i.getBookingNum()).getPhoneNumber()).equals(key))
+            {
+                res.add(i);
+            }
+            else if(i.getIDNum().equals(key))
+            {
+                res.add(i);
+            }
+            else if(i.getBaggageNum().toString().equals(key))
+            {
+                res.add(i);
+            }
+            else if((i.getBaggageWeight().toString()+"kg").equals(key))
+            {
+                res.add(i);
+            }
+            else if(i.getGate().equals(key))
+            {
+                res.add(i);
+            }
+            else if(StringUtils.join(i.getStandardMeal(),",").equals(key))
+            {
+                res.add(i);
+            }
+            else if(StringUtils.join(i.getExtraMealName(),",").equals(key))
+            {
+                res.add(i);
+            }
+            else
+            {}
         }
         return res;
     }
