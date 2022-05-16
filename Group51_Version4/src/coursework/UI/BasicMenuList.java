@@ -107,7 +107,7 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                             panel3.setLayout(new BorderLayout());
                             //--------label2-----------
                             label2.setText("   *   Select the meal you like and Click Ok.  Once you've confirmed, it cannot be changed.");
-                            label2.setFont(new Font("Dialog", Font.ITALIC, 10));
+                            label2.setFont(new Font("Dialog", Font.ITALIC , 12));
                             JLabel LB = new JLabel("      ");
                             panel3.add(label2, BorderLayout.CENTER);
                             panel3.add(LB, BorderLayout.SOUTH);
@@ -138,6 +138,7 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                                  button6.setBackground(Color.white);
                                                  button6.setIcon(new ImageIcon("./Imgs/Hamburger  .jpeg"));
                                                  button6.setOpaque(true);
+                                                 button6.setBorderPainted(false);
 
                                                  //------JRadiobutton----
                                                  Hamburger.setText("Hamburger");
@@ -151,6 +152,7 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                                  button7.setBackground(Color.white);
                                                  button7.setIcon(new ImageIcon("./Imgs/Rice.jpg"));
                                                  button7.setOpaque(true);
+                                                 button7.setBorderPainted(false);
 
                                                  //------JRadioButton----
                                                  Rice.setText("Rice");
@@ -164,6 +166,7 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                                  button8.setBackground(Color.white);
                                                  button8.setIcon(new ImageIcon("./Imgs/Pasta.jpg"));
                                                  button8.setOpaque(true);
+                                                 button8.setBorderPainted(false);
 
                                                  //-----JRadioButton----
                                                  Pasta.setText("Pasta");
@@ -206,6 +209,7 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                                  button9.setBackground(Color.white);
                                                  button9.setIcon(new ImageIcon("./Imgs/Juice.jpg"));
                                                  button9.setOpaque(true);
+                                                 button9.setBorderPainted(false);
                                                  //-----JRadioButton------
                                                  Juice.setHorizontalAlignment(SwingConstants.CENTER);
                                                  Juice.setText("Juice");
@@ -222,6 +226,7 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                                  button10.setBackground(Color.white);
                                                  button10.setIcon(new ImageIcon("./Imgs/Milk.jpg"));
                                                  button10.setOpaque(true);
+                                                 button10.setBorderPainted(false);
                                           }
                                           {
                                                  //----JRadioButton----
@@ -234,6 +239,7 @@ public class BasicMenuList extends JPanel implements actionPerformed {
                                                  button11.setBackground(Color.white);
                                                  button11.setIcon(new ImageIcon("./Imgs/Coffee American.jpg"));
                                                  button11.setOpaque(true);
+                                                 button11.setBorderPainted(false);
 
 
                                           }

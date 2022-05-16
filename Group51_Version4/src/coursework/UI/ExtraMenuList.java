@@ -106,9 +106,9 @@ public class ExtraMenuList extends JPanel {
                 panel3.setBackground(Color.white);
                 panel3.setLayout(new BorderLayout());
                 //--------label2-----------
-                label2.setText("You are given the option to choose special meal with gourmet menu.\n" +
-                        "These require an extra price. Select the meal you want and click Ok.");
-                label2.setFont(new Font("Dialog", Font.ITALIC, 10));
+                label2.setText("   *   You are given the option to choose special meals with an extra payment." +
+                        "\nSelect the meal you want and click Ok.");
+                label2.setFont(new Font("Dialog", Font.ITALIC, 12));
                 JLabel Lb =new JLabel("    ");
                 panel3.add(label2, BorderLayout.CENTER);
                 panel3.add(Lb, BorderLayout.SOUTH);
@@ -146,6 +146,7 @@ public class ExtraMenuList extends JPanel {
                             button6.setBackground(Color.white);
                             button6.setIcon(new ImageIcon("./Imgs/Tacco.jpg"));
                             button6.setOpaque(true);
+                            button6.setBorderPainted(false);
                         }
                         {
                             //------JRadioButton----
@@ -157,6 +158,7 @@ public class ExtraMenuList extends JPanel {
                             button7.setBackground(Color.white);
                             button7.setIcon(new ImageIcon("./Imgs/Tiramisu Cake.jpg"));
                             button7.setOpaque(true);
+                            button7.setBorderPainted(false);
                         }
                         {
                             //------JRadioButton----
@@ -168,6 +170,7 @@ public class ExtraMenuList extends JPanel {
                             button8.setBackground(Color.white);
                             button8.setIcon(new ImageIcon("./Imgs/Cheese Lasagna.jpg"));
                             button8.setOpaque(true);
+                            button8.setBorderPainted(false);
                         }
                         panel11.add(button6, new GridLayout());
                         panel11.add(button7, new GridLayout());
@@ -207,6 +210,7 @@ public class ExtraMenuList extends JPanel {
                             button9.setBackground(Color.white);
                             button9.setIcon(new ImageIcon("./Imgs/Coffee Latte.jpg"));
                             button9.setOpaque(true);
+                            button9.setBorderPainted(false);
                         }
                         {
                             //-----JRadioButton------
@@ -218,6 +222,7 @@ public class ExtraMenuList extends JPanel {
                             button10.setBackground(Color.white);
                             button10.setIcon(new ImageIcon("./Imgs/Shaken Tea Lemonade.jpg"));
                             button10.setOpaque(true);
+                            button10.setBorderPainted(false);
                         }
                         {
                             //---- JRadioButton ----
@@ -230,6 +235,7 @@ public class ExtraMenuList extends JPanel {
                             button11.setBackground(Color.white);
                             button11.setIcon(new ImageIcon("./Imgs/Frappuccino.jpg"));
                             button11.setOpaque(true);
+                            button11.setBorderPainted(false);
                         }
                         panel16.add(button9, new GridLayout());
                         panel16.add(button10, new GridLayout());
