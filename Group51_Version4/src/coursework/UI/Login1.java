@@ -36,7 +36,7 @@ public class Login1 extends JFrame {
     public Login1() {
         this.setTitle("Check-in");
         this.setSize(800, 500);
-        this.setLocation(400, 150);
+        this.setLocation(320, 120);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -75,6 +75,15 @@ public class Login1 extends JFrame {
     JButton back;
 
     public void loadFrame() {
+
+        setBak();
+        Container c = getContentPane();
+        JPanel jp = new JPanel();
+        jp.setOpaque(false);
+        c.add(jp);
+        c.setSize(800, 500);
+        c.setVisible(true);
+
         p1 = new JPanel();
         p2 = new JPanel();
         p3 = new JPanel();
@@ -87,6 +96,10 @@ public class Login1 extends JFrame {
         p3.setPreferredSize(new Dimension(230, 380));
         p4.setBackground(new Color(60, 100, 210));
         p4.setPreferredSize(new Dimension(230, 380));
+        p1.setOpaque(false);
+        p2.setOpaque(false);
+        p3.setOpaque(false);
+        p4.setOpaque(false);
 
         content = new JPanel();
         content.setLayout(new GridLayout(8, 1));
@@ -160,12 +173,12 @@ public class Login1 extends JFrame {
         t1 = new JTextField(20);
         t1.addKeyListener(new LetterKeyListener(t1));
         t1.addFocusListener(new JTextFieldHintListener(t1, "Surname"));
-        t1.setBorder(BorderFactory.createEtchedBorder());
+        t1.setBorder(BorderFactory.createTitledBorder("Surname"));
 
         t2 = new JTextField(20);
         t2.addKeyListener(new NumKeyListener(t1));
         t2.addFocusListener(new JTextFieldHintListener(t2, "ID number"));
-        t2.setBorder(BorderFactory.createEtchedBorder());
+        t2.setBorder(BorderFactory.createTitledBorder("ID number"));
 
         text1.add(t1);
         text2.add(t2);
@@ -203,7 +216,16 @@ public class Login1 extends JFrame {
         option1.add(b2);
         option2.add(b3);
     }
+    public void setBak() {
 
+        ((JPanel) this.getContentPane()).setOpaque(false);
+        ImageIcon img = new ImageIcon(
+                "./Imgs/backpic.jpeg");
+        JLabel background = new JLabel(img);
+        this.getLayeredPane().add(background, Integer.valueOf(Integer.MIN_VALUE));
+        background.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
+
+    }
 }
 
 class JTextFieldHintListener implements FocusListener {
@@ -261,14 +283,9 @@ class NumKeyListener implements KeyListener{
         if(text.getText().length()<20) {
             char c = e.getKeyChar();
             if (!(c >= '0' && c <= '9')) {
-                System.out.println("char:"+e.getKeyChar());
-                System.out.println("code:"+e.getKeyCode());
                 b1=true;
                 this.check();
                 e.consume();
-                System.out.println("b1"+b1);
-                System.out.println("b2"+b2);
-                System.out.println("result:"+(b1&&b2));
             }
             else{
                 b1=false;
@@ -284,7 +301,6 @@ class NumKeyListener implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
-            System.out.println("keypressed");
             b2=false;
         }
         else{
@@ -294,7 +310,6 @@ class NumKeyListener implements KeyListener{
     @Override
     public void keyReleased(KeyEvent e){
         if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
-            System.out.println("keypressed");
             b2=false;
         }
         else {
@@ -326,8 +341,6 @@ class LetterKeyListener implements KeyListener{
     public void keyTyped(KeyEvent e){
         if(text.getText().length()<20) {
             if (e.getKeyChar() < 'A' || e.getKeyChar() > 'Z') {
-                    System.out.println("char:"+e.getKeyChar());
-                    System.out.println("code:"+e.getKeyCode());
                     b1=true;
                     this.check();
                     e.consume();
@@ -346,7 +359,6 @@ class LetterKeyListener implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
-            System.out.println("keypressed");
             b2=false;
         }
         else{
@@ -356,7 +368,6 @@ class LetterKeyListener implements KeyListener{
     @Override
     public void keyReleased(KeyEvent e){
         if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
-            System.out.println("keypressed");
             b2=false;
         }
         else{
@@ -416,21 +427,16 @@ class MyButtonListener implements ActionListener {
 
     public boolean checkTextField() {
         boolean a1 = this.CheckEmpty(jf.t1);
-        System.out.println(a1);
         boolean a2 = this.CheckEmpty(jf.t2);
-        System.out.println(a2);
         return a1 && a2;
     }
 
     public boolean CheckEmpty(JTextField textField) {
         boolean result = false;
-        System.out.println(textField.getText());
         if (textField.getText().equals("") || textField.getText().equals("Surname")
                 || textField.getText().equals("ID number")) {
-            System.out.println("the textfield is null");
         } else {
             result = true;
-            System.out.println(textField.getText());
         }
         return result;
     }

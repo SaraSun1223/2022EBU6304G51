@@ -396,7 +396,7 @@ public class PersonalController implements PassengerUtils,StaffUtils{
             Iterator iterator = b.iterator();
             if(iterator.hasNext()){
                 a.add(((coursework.backend.model.Reservations)iterator.next()).converter());
-                System.out.println(((coursework.backend.model.Reservations)iterator.next()).converter());
+
             }
             return a;
             }catch (Exception e){

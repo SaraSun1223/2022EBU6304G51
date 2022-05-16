@@ -17,9 +17,18 @@ import static javax.swing.BorderFactory.*;
 public class JFrameTest extends JFrame{
 
 	public  JFrameTest() {
+
+		setBak();
+		Container c = getContentPane();
+		JPanel jp = new JPanel();
+		jp.setOpaque(false);
+		c.add(jp);
+		c.setSize(800, 500);
+		c.setVisible(true);
+
 		this.setTitle("Check-in");
 		this.setSize(800, 500);
-		this.setLocation(400, 150);
+		this.setLocation(320, 120);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -42,7 +51,10 @@ public class JFrameTest extends JFrame{
         jpwest.setPreferredSize(new Dimension(230, 380));
         jpeast.setBackground(new Color(60, 100, 210));
         jpeast.setPreferredSize(new Dimension(230, 380));
-
+		jpnorth.setOpaque(false);
+		jpsouth.setOpaque(false);
+		jpwest.setOpaque(false);
+		jpeast.setOpaque(false);
 		
 		JPanel jplab1 = new JPanel();
 		jplab1.setBackground(Color.white);
@@ -121,8 +133,17 @@ public class JFrameTest extends JFrame{
        this.add(jpwest, BorderLayout.WEST);
        this.add(jpeast, BorderLayout.EAST);
 	}
-	
-	
+
+	public void setBak() {
+
+		((JPanel) this.getContentPane()).setOpaque(false);
+		ImageIcon img = new ImageIcon(
+				"./Imgs/backpic.jpeg");
+		JLabel background = new JLabel(img);
+		this.getLayeredPane().add(background, Integer.valueOf(Integer.MIN_VALUE));
+		background.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
+
+	}
 }
 class ButtonListener4 implements ActionListener{
     JFrameTest tf;

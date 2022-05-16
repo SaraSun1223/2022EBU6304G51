@@ -26,9 +26,17 @@ public class JFrameTest3 extends JFrame {
 
 	public JFrameTest3() {
 
+		setBak();
+		Container c = getContentPane();
+		JPanel jp = new JPanel();
+		jp.setOpaque(false);
+		c.add(jp);
+		c.setSize(800, 500);
+		c.setVisible(true);
+
 		this.setTitle("Welcome");
 		this.setSize(800, 500);
-		this.setLocation(400, 150);
+		this.setLocation(320, 120);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -37,8 +45,8 @@ public class JFrameTest3 extends JFrame {
 		JPanel jpeast = new JPanel();
 		JPanel jpwest = new JPanel();
 		JPanel jpcenter = new JPanel();
-		
-		
+
+		jpcenter.setPreferredSize(new Dimension(340,320));
 		jpcenter.setLayout(new GridLayout(4, 1));
 
 		jpnorth.setBackground(new Color(60, 100, 210));
@@ -49,7 +57,13 @@ public class JFrameTest3 extends JFrame {
         jpwest.setPreferredSize(new Dimension(230, 380));
         jpeast.setBackground(new Color(60, 100, 210));
         jpeast.setPreferredSize(new Dimension(230, 380));
+		jpnorth.setOpaque(false);
+		jpsouth.setOpaque(false);
+		jpwest.setOpaque(false);
+		jpeast.setOpaque(false);
+
 		jpcenter.setBackground(Color.white);
+
         jpcenter.setBorder(BorderFactory.createEtchedBorder());
 		
 		
@@ -96,15 +110,27 @@ public class JFrameTest3 extends JFrame {
 		
 		jpcenter.add(jp1);
 		jpcenter.add(jp2);
-	   this.add(jpcenter, BorderLayout.CENTER);
+//		this.setLayout(new GridLayout(3,3));
+		this.add(jpcenter, BorderLayout.CENTER);
 		this.add(jpnorth, BorderLayout.NORTH);
 		this.add(jpsouth, BorderLayout.SOUTH);
 		this.add(jpwest, BorderLayout.WEST);
 		this.add(jpeast, BorderLayout.EAST);
 
-		this.setVisible(true);
+
 	}
 
+
+	public void setBak() {
+
+		((JPanel) this.getContentPane()).setOpaque(false);
+		ImageIcon img = new ImageIcon(
+				"./Imgs/backpic.jpeg");
+		JLabel background = new JLabel(img);
+		this.getLayeredPane().add(background, Integer.valueOf(Integer.MIN_VALUE));
+		background.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
+
+	}
 }
 
 class ButtonListener5 implements ActionListener{

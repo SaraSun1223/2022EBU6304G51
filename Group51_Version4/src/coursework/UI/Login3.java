@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.BorderLayout;
 
+import static coursework.UI.ButtonListener2test.bookingNumberStored;
+import static coursework.UI.MyButtonListener.IDnumStored;
+
 
 /**
  * This is class for The Staff Login.
@@ -34,7 +37,7 @@ public class Login3 extends JFrame {
 
     public Login3() {
         this.setTitle("Check-in");
-        this.setLocation(400, 150);
+        this.setLocation(320, 120);
         this.setSize(800, 500);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,6 +73,14 @@ public class Login3 extends JFrame {
     JButton back;
 
     public void loadFrame() {
+        setBak();
+        Container c = getContentPane();
+        JPanel jp = new JPanel();
+        jp.setOpaque(false);
+        c.add(jp);
+        c.setSize(800, 500);
+        c.setVisible(true);
+
         p1 = new JPanel();
         p2 = new JPanel();
         p3 = new JPanel();
@@ -82,6 +93,10 @@ public class Login3 extends JFrame {
         p3.setPreferredSize(new Dimension(230, 380));
         p4.setBackground(new Color(60, 100, 210));
         p4.setPreferredSize(new Dimension(230, 380));
+        p1.setOpaque(false);
+        p2.setOpaque(false);
+        p3.setOpaque(false);
+        p4.setOpaque(false);
 
         content = new JPanel();
         content.setLayout(new GridLayout(7, 1));
@@ -176,7 +191,16 @@ public class Login3 extends JFrame {
         option1.add(b2);
         option2.add(b3);
     }
+    public void setBak() {
 
+        ((JPanel) this.getContentPane()).setOpaque(false);
+        ImageIcon img = new ImageIcon(
+                "./Imgs/backpic.jpeg");
+        JLabel background = new JLabel(img);
+        this.getLayeredPane().add(background, Integer.valueOf(Integer.MIN_VALUE));
+        background.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
+
+    }
     public void buttonAction() {
         ButtonListener3 buttonListener;
         buttonListener = new ButtonListener3(this);
@@ -226,9 +250,7 @@ class ButtonListener3 implements ActionListener {
     }
 
 
-    public static String IDnumStored;
-    public static String surnameStored;
-    public static String bookingNumberStored;
+
     public void loginCheck(){
         String surname= "ZHANG";
         String idNo="2019213335";
@@ -241,7 +263,6 @@ class ButtonListener3 implements ActionListener {
         }else {
             jf.setVisible(false); // exit current frame
             IDnumStored = idNo;
-            surnameStored = surname;
             bookingNumberStored =  bookingNumber;
             new MyBooking().jfra.setVisible(true);
         }

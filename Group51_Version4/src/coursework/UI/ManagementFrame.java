@@ -139,6 +139,7 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
         b2.setActionCommand("Back");
         b2.setBackground(new Color(60, 100, 210));
         b2.setForeground(Color.white);
+        b2.setOpaque(true);
         b2.setPreferredSize(new Dimension(60, 30));
         b2.setBorder(BorderFactory.createRaisedSoftBevelBorder());
         j2p1 = new JPanel();
@@ -160,6 +161,7 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
         b3.setActionCommand("Back");
         b3.setBackground(new Color(60, 100, 210));
         b3.setForeground(Color.white);
+        b3.setOpaque(true);
         b3.setPreferredSize(new Dimension(60, 30));
         b3.setBorder(BorderFactory.createRaisedSoftBevelBorder());
         j3p1 = new JPanel();
@@ -181,6 +183,7 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
         b4.setActionCommand("Back");
         b4.setBackground(new Color(60, 100, 210));
         b4.setForeground(Color.white);
+        b4.setOpaque(true);
         b4.setPreferredSize(new Dimension(60, 30));
         b4.setBorder(BorderFactory.createRaisedSoftBevelBorder());
         j4p1 = new JPanel();
@@ -293,7 +296,7 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
 		
 		p2.setPreferredSize(new Dimension(0,30));
 
-        jfra.setLocation(400,150);
+        jfra.setLocation(320,120);
         jfra.setSize(800,500);
         jfra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jfra.setContentPane(pane);
@@ -312,7 +315,6 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
             if (e.getClickCount() == 2) {
                 index = menu.locationToIndex(e.getPoint());
                 String a = "pp"+(index+1);
-                System.out.println(index+a);
                 pp.show(p3, a);
 
             }
@@ -326,15 +328,10 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
         Info = new String[passengers.size()][5];
         for(int i = 0; i < passengers.size(); i++){
             Info[i][0]=passengers.get(i).getFlightNumber();
-            System.out.println(Info[i][0]);
             Info[i][1]=passengers.get(i).getFirstName()+" "+passengers.get(i).getSurname();
-            System.out.println(Info[i][1]);
             Info[i][2]=passengers.get(i).getIdNumber();
-            System.out.println(Info[i][2]);
             Info[i][3]=Boolean.toString(passengers.get(i).getStatus());
-            System.out.println(Info[i][3]);
             Info[i][4]=passengers.get(i).getPhoneNumber();
-            System.out.println(Info[i][4]);
         }
         return Info;
     }
@@ -396,33 +393,21 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
         ArrayList<Reservations> reservations = new ArrayList<>();
         if (e.getActionCommand().equals("SearchFlight")) {
             PersonalController control = PersonalController.getController();
-            System.out.println(SearchPsg.getText());
+
             passengers=control.filterByKeyword(control.getAllPassenger(), SearchPsg.getText());
-            System.out.println(passengers);
-            System.out.println(passengers.size());
-//            System.out.println(Info[0][0]);
-//            System.out.println(Info[0][1]);
-//            System.out.println(Info[0][2]);
-//            System.out.println(Info[0][3]);
-//            System.out.println(Info[0][4]);
+
             Info = new String[passengers.size()][5];
 
-//            System.out.println(passengers.get(0));
+
             for(int i = 0; i < passengers.size(); i++){
                 Info[i][0]=passengers.get(i).getFlightNumber();
-                System.out.println(passengers.get(i).getFlightNumber());
-                System.out.println(Info[i][0]);
                 Info[i][1]=passengers.get(i).getFirstName()+" "+passengers.get(i).getSurname();
-                System.out.println(Info[i][1]);
                 Info[i][2]=passengers.get(i).getIdNumber();
-                System.out.println(Info[i][2]);
                 Info[i][3]=Boolean.toString(passengers.get(i).getStatus());
-                System.out.println(Info[i][3]);
                 Info[i][4]=passengers.get(i).getPhoneNumber();
-                System.out.println(Info[i][4]);
+
             }
-            System.out.println(Info);
-            System.out.println("hello");
+
 
             PsgInftable = new JTable(new MyTable1(Names,Info));
             PsgInftable.setPreferredScrollableViewportSize(new Dimension(600,34));
@@ -438,45 +423,26 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
             pp5.add(new JLabel("hello"));
             p3.add(pp5,"pp5");
             pp1.setVisible(true);
-//            pp.show(p3,"pp1");
-//            p3.setVisible(true);
-//            jfra.setLocation(400,10);
-//            jfra.setSize(760,480);
-//            jfra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            jfra.setContentPane(pane);
-//            jfra.setVisible(true);//set frame visible
-            System.out.println("Already searched through all passenger information.");
+
         }
         else if (e.getActionCommand().equals("SearchBaggage")) {
             PersonalController control = PersonalController.getController();
-            System.out.println(SearchBag.getText());
+
             reservations =control.FilterByKeyword(control.getAllReservations(), SearchBag.getText());
-            System.out.println(reservations);
-            System.out.println(reservations.size());
-//            System.out.println(Info[0][0]);
-//            System.out.println(Info[0][1]);
-//            System.out.println(Info[0][2]);
-//            System.out.println(Info[0][3]);
-//            System.out.println(Info[0][4]);
+
             Info2 = new String[reservations.size()][5];
 
-//            System.out.println(passengers.get(0));
+
             for(int i = 0; i < reservations.size(); i++){
                 Info2[i][0]=reservations.get(i).getFlightNum();
-                System.out.println(reservations.get(i).getFlightNum());
-                System.out.println(Info2[i][0]);
                 Info2[i][1]=control.getPassengerInform(reservations.get(i).getBookingNum()).getFirstName()+" "+
                         control.getPassengerInform(reservations.get(i).getBookingNum()).getSurname();
-                System.out.println(Info2[i][1]);
                 Info2[i][2]=reservations.get(i).getIDNum();
-                System.out.println(Info2[i][2]);
                 Info2[i][3]=Integer.toString(reservations.get(i).getBaggageNum());
-                System.out.println(Info2[i][3]);
                 Info2[i][4]=Integer.toString(reservations.get(i).getBaggageWeight())+"kg";
-                System.out.println(Info2[i][4]);
+
             }
-            System.out.println(Info2);
-            System.out.println("hello");
+
 
             BaggageInftable = new JTable(new MyTable1(Names2,Info2));
             BaggageInftable.setPreferredScrollableViewportSize(new Dimension(600,34));
@@ -491,45 +457,28 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
             pp5.add(new JLabel("hello"));
             p3.add(pp5,"pp5");
             pp2.setVisible(true);
-//            pp.show(p3,"pp1");
-//            p3.setVisible(true);
-//            jfra.setLocation(400,10);
-//            jfra.setSize(760,480);
-//            jfra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            jfra.setContentPane(pane);
-//            jfra.setVisible(true);//set frame visible
-            System.out.println("Already searched through all passenger information.");
+
         }
         else if (e.getActionCommand().equals("SearchMeal")) {
             PersonalController control = PersonalController.getController();
-            System.out.println(SearchMeal.getText());
+
             reservations =control.FilterByKeyword(control.getAllReservations(), SearchMeal.getText());
-            System.out.println(reservations);
-            System.out.println(reservations.size());
-//            System.out.println(Info[0][0]);
-//            System.out.println(Info[0][1]);
-//            System.out.println(Info[0][2]);
-//            System.out.println(Info[0][3]);
-//            System.out.println(Info[0][4]);
+
+
             Info3 = new String[reservations.size()][5];
 
-//            System.out.println(passengers.get(0));
+
             for(int i = 0; i < reservations.size(); i++){
                 Info3[i][0]=reservations.get(i).getFlightNum();
-                System.out.println(reservations.get(i).getFlightNum());
-                System.out.println(Info3[i][0]);
+
                 Info3[i][1]=control.getPassengerInform(reservations.get(i).getBookingNum()).getFirstName()+" "+
                         control.getPassengerInform(reservations.get(i).getBookingNum()).getSurname();
-                System.out.println(Info3[i][1]);
+
                 Info3[i][2]=reservations.get(i).getGate();
-                System.out.println(Info3[i][2]);
                 Info3[i][3]=StringUtils.join(reservations.get(i).getStandardMeal(),",");
-                System.out.println(Info3[i][3]);
                 Info3[i][4]=StringUtils.join(reservations.get(i).getExtraMealName(),",");
-                System.out.println(Info3[i][4]);
             }
-            System.out.println(Info3);
-            System.out.println("hello");
+
 
             MealInftable = new JTable(new MyTable1(Names3,Info3));
             MealInftable.setPreferredScrollableViewportSize(new Dimension(600,34));
@@ -544,45 +493,26 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
             pp5.add(new JLabel("hello"));
             p3.add(pp5,"pp5");
             pp3.setVisible(true);
-//            pp.show(p3,"pp1");
-//            p3.setVisible(true);
-//            jfra.setLocation(400,10);
-//            jfra.setSize(760,480);
-//            jfra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            jfra.setContentPane(pane);
-//            jfra.setVisible(true);//set frame visible
-            System.out.println("Already searched through all passenger information.");
+
         }
         else if (e.getActionCommand().equals("SearchSeat")) {
             PersonalController control = PersonalController.getController();
-            System.out.println(SearchSeat.getText());
+
             reservations =control.FilterByKeyword(control.getAllReservations(), SearchSeat.getText());
-            System.out.println(reservations);
-            System.out.println(reservations.size());
-//            System.out.println(Info[0][0]);
-//            System.out.println(Info[0][1]);
-//            System.out.println(Info[0][2]);
-//            System.out.println(Info[0][3]);
-//            System.out.println(Info[0][4]);
+
             Info4 = new String[reservations.size()][5];
 
-//            System.out.println(passengers.get(0));
+
             for(int i = 0; i < reservations.size(); i++){
                 Info4[i][0]=reservations.get(i).getFlightNum();
-                System.out.println(reservations.get(i).getFlightNum());
-                System.out.println(Info4[i][0]);
+
                 Info4[i][1]=control.getPassengerInform(reservations.get(i).getBookingNum()).getFirstName()+" "+
                         control.getPassengerInform(reservations.get(i).getBookingNum()).getSurname();
-                System.out.println(Info3[i][1]);
                 Info4[i][2]=reservations.get(i).getIDNum();
-                System.out.println(Info3[i][2]);
                 Info4[i][3]=reservations.get(i).getGate();
-                System.out.println(Info3[i][3]);
                 Info4[i][4]=control.getPassengerInform(reservations.get(i).getBookingNum()).getPhoneNumber();
-                System.out.println(Info3[i][4]);
             }
-            System.out.println(Info4);
-            System.out.println("hello");
+
 
             SeatInftable = new JTable(new MyTable1(Names4,Info4));
             SeatInftable.setPreferredScrollableViewportSize(new Dimension(600,34));
@@ -597,14 +527,7 @@ public class ManagementFrame extends MouseAdapter implements ActionListener{
             pp5.add(new JLabel("hello"));
             p3.add(pp5,"pp5");
             pp4.setVisible(true);
-//            pp.show(p3,"pp1");
-//            p3.setVisible(true);
-//            jfra.setLocation(400,10);
-//            jfra.setSize(760,480);
-//            jfra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            jfra.setContentPane(pane);
-//            jfra.setVisible(true);//set frame visible
-            System.out.println("Already searched through all passenger information.");
+
         }
         else{
             jfra.setVisible(false);

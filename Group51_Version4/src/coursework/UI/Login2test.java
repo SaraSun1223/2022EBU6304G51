@@ -38,7 +38,7 @@ public class Login2test extends JFrame {
     public Login2test() {
         this.setTitle("Check-in");
         this.setSize(800, 500);
-        this.setLocation(400, 150);
+        this.setLocation(320, 120);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -74,6 +74,14 @@ public class Login2test extends JFrame {
     JButton back;
 
     public void loadFrame() {
+        setBak();
+        Container c = getContentPane();
+        JPanel jp = new JPanel();
+        jp.setOpaque(false);
+        c.add(jp);
+        c.setSize(800, 500);
+        c.setVisible(true);
+
         p1 = new JPanel();
         p2 = new JPanel();
         p3 = new JPanel();
@@ -86,6 +94,10 @@ public class Login2test extends JFrame {
         p3.setPreferredSize(new Dimension(230, 380));
         p4.setBackground(new Color(60, 100, 210));
         p4.setPreferredSize(new Dimension(230, 380));
+        p1.setOpaque(false);
+        p2.setOpaque(false);
+        p3.setOpaque(false);
+        p4.setOpaque(false);
 
         content = new JPanel();
         content.setSize(300, 400);
@@ -163,7 +175,7 @@ public class Login2test extends JFrame {
         t1 = new JTextField(20);
         t1.addFocusListener(new JTextFieldHintListener(t1, "Booking Number"));
         t1.addKeyListener(new NumKeyListener(t1));
-        t1.setBorder(BorderFactory.createEtchedBorder());
+        t1.setBorder(BorderFactory.createTitledBorder("Booking Number"));
         text.add(t1);
 
     }
@@ -185,6 +197,16 @@ public class Login2test extends JFrame {
 
         option1.add(b2);
         option2.add(b3);
+    }
+    public void setBak() {
+
+        ((JPanel) this.getContentPane()).setOpaque(false);
+        ImageIcon img = new ImageIcon(
+                "./Imgs/backpic.jpeg");
+        JLabel background = new JLabel(img);
+        this.getLayeredPane().add(background, Integer.valueOf(Integer.MIN_VALUE));
+        background.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
+
     }
 
     public void buttonAction() {
@@ -248,12 +270,9 @@ class ButtonListener2test implements ActionListener {
 
     public boolean CheckEmpty(JTextField textField) {
         boolean result = false;
-        System.out.println(textField.getText());
         if (textField.getText().equals("") || textField.getText().equals("Booking Number")) {
-            System.out.println("the textfield is null");
         } else {
             result = true;
-            System.out.println(textField.getText());
         }
         return result;
     }

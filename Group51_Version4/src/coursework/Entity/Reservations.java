@@ -67,7 +67,6 @@ public class Reservations {
         a[1] = "Meal selected:";
         for(int i = 0 ; i < standardMeal.size() ;  i++){
             a[1]+=standardMeal.get(i)+"  ";
-            System.out.println(a[1]);
         }
         a[2] = "BaggageNum:" + baggageNum;
         a[3] = "Baggage Weight:" + baggageWeight;

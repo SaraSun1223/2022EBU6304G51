@@ -27,7 +27,7 @@ public class StaffLogin extends JFrame {
 
     JLabel welcome;
     JTextField t1;
-    JTextField t2;
+    JPasswordField t2;
     JButton b1;
     JButton b2;
 
@@ -44,9 +44,17 @@ public class StaffLogin extends JFrame {
     JPanel p4;
 
     public StaffLogin() {
+        setBak();
+        Container c = getContentPane();
+        JPanel jp = new JPanel();
+        jp.setOpaque(false);
+        c.add(jp);
+        c.setSize(800, 500);
+        c.setVisible(true);
+
         this.setTitle("Staff Check-in");
         this.setSize(800, 500);
-        this.setLocation(400, 150);
+        this.setLocation(320, 120);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -63,6 +71,11 @@ public class StaffLogin extends JFrame {
         p3.setPreferredSize(new Dimension(230, 300));
         p4.setBackground(new Color(60, 100, 210));
         p4.setPreferredSize(new Dimension(230, 300));
+        p1.setOpaque(false);
+        p2.setOpaque(false);
+        p3.setOpaque(false);
+        p4.setOpaque(false);
+
 
         login = new JPanel();
         login.setLayout(new GridLayout(5, 1));
@@ -119,16 +132,26 @@ public class StaffLogin extends JFrame {
         this.add(p3, BorderLayout.WEST);
         this.add(p4, BorderLayout.EAST);
     }
+    public void setBak() {
+
+        ((JPanel) this.getContentPane()).setOpaque(false);
+        ImageIcon img = new ImageIcon(
+                "./Imgs/backpic.jpeg");
+        JLabel background = new JLabel(img);
+        this.getLayeredPane().add(background, Integer.valueOf(Integer.MIN_VALUE));
+        background.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
+
+    }
 
     public void panel1Style() {
         t1 = new JTextField(20);
         t1.addFocusListener(new JTextFieldHintListener(t1, "Staff ID"));
         t1.addKeyListener(new NumKeyListener(t1));
-        t1.setBorder(BorderFactory.createEtchedBorder());
+        t1.setBorder(BorderFactory.createTitledBorder("Staff ID"));
 
-        t2 = new JTextField(20);
-        t2.addFocusListener(new JTextFieldHintListener(t2, "Password"));
-        t2.setBorder(BorderFactory.createEtchedBorder());
+        t2 = new JPasswordField(20);
+
+        t2.setBorder(BorderFactory.createTitledBorder("Password"));
 
         text1.add(t1);
         text2.add(t2);
@@ -183,21 +206,18 @@ class StaffButtonListener implements ActionListener {
 
     public boolean checkTextField() {
         boolean a1 = this.CheckEmpty(jf.t1);
-        System.out.println(a1);
         boolean a2 = this.CheckEmpty(jf.t2);
-        System.out.println(a2);
         return a1 && a2;
     }
 
     public boolean CheckEmpty(JTextField textField) {
         boolean result = false;
-        System.out.println(textField.getText());
+
         if (textField.getText().equals("") || textField.getText().equals("Staff ID")
                 || textField.getText().equals("Password")) {
-            System.out.println("the textfield is null");
+
         } else {
             result = true;
-            System.out.println(textField.getText());
         }
         return result;
     }

@@ -295,7 +295,7 @@ public class MyBooking extends MouseAdapter {
 
         p2.setPreferredSize(new Dimension(0,30));
 
-        jfra.setLocation(400,150);
+        jfra.setLocation(320,120);
         jfra.setSize(800,500);
         jfra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jfra.setContentPane(pane);
