@@ -54,17 +54,4 @@ EBU6304-Software Engineering Project of Group 51
 |   1004   | 10041004 |
 |   1005   | 10051005 |
 
-## Developers and their Contributions 
-We are all from Beijing University of Posts and Telecommunications, and members of BUPT-QMUL Joint Programme. Group 51 of EBU6304 Software Engineering Project   
-### Jiayi ZHANG
-Group leader, allocating the tasks. Specifying the requirements of ordering process. Coding for the UI Classes of BasicMenuList and ExtraMenuList, coding for the function of payment.Finished the data of Menu, and completing the according controller classes. Being in charge of modifying and integrating the report. Being responsible for refactoring the code.Being responsible for the user manual part.Being responsible for recording the demonstration video.
-### Shaohe XIAO
-Participating in writing user stories and product backlog and modifying prototype design.Coding for the GUI design of management part, Payment and Confirmations pages, writing codes related to reservations including entity classes and controller functions, modifing data manager function to enable the new information display. Responsible for analysis and design part in the report. 
-### Junyue LI
-Building the MVC framework of the project. Coding for GUI of Check-in ways of passengers and realizing basic restrictions and error checking for the input data. Being responsible for reading and writing data. Realizing the function of passenger login authentication and modifying airline staff login authentication. Realizing the function of displaying passengers' information. Realizing the function of searching the passenger information by entering the keywords. Being responsible for the Project Management part of the report.
-### Shiyang NIE
-Make the main pages of the prototype, and participate in supplementing the story and requirements. Responsible for the JSON files of flight information and seat information. Coding for the UI Classes of Seat and ExtraSeat, and related control classes. Responsible for the TDD code and system testing for each version, page design and beautification, and packaging the JAR files of the program. Being Responsible for writing Test part of the report.
-### Jinshuo SUN
-Participating in writing user stories and product backlog. Be responsible for UI classes of StaffLogin and Login1, Login2Test, Login3.Add 'back'button in MyBooking.java and ManagementFrame.java.Supplementing JSON files. Draw UML diagrams; Add background picture in the login interface; Responsible for requirements and implementation part of the report.
-### Yian ZHANG
-Completed the prototype of employee login and the writing and reading of the employee information JSON file, and wrote the TDD file of version 4 together with Nie Shixiang, completed the restrictions on the bank card number and password after selecting the payment method, and some pop-up windows for confirmation, and completed the user story form and part of the demand analysis in the final report
+
